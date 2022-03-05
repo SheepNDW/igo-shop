@@ -13,7 +13,7 @@
             type="button"
             @click="removeAllOrders"
           >
-            <i class="material-icons me-1">delete</i>
+            <i class="material-icons-outlined me-1">delete</i>
             刪除全部訂單
           </button>
         </div>

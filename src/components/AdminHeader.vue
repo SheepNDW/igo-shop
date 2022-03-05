@@ -9,7 +9,7 @@
       class="btn btn-sm btn-secondary d-flex align-items-center"
       @click="logout"
     >
-      <i class="material-icons me-1">logout</i>登出
+      <i class="material-icons-outlined me-1">logout</i>登出
     </button>
   </nav>
 </template>

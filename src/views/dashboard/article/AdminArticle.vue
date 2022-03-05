@@ -13,7 +13,7 @@
             type="button"
             @click="openArticleModal('new')"
           >
-            <i class="material-icons me-2">add_circle_outline</i>
+            <i class="material-icons-outlined me-2">add_circle_outline</i>
             新增文章
           </button>
         </div>
@@ -40,10 +40,10 @@
               {{ dayjs.unix(item.create_at).format('YYYY-MM-DD') }}
             </div>
             <div class="col-2 text-success" v-if="item.isPublic">
-              <i class="material-icons">check_circle</i>
+              <i class="material-icons-outlined">check_circle</i>
             </div>
             <div class="col-2 text-danger" v-else>
-              <i class="material-icons">cancel</i>
+              <i class="material-icons-outlined">cancel</i>
             </div>
             <div class="col-2 d-flex justify-content-center">
               <button

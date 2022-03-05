@@ -13,7 +13,7 @@
             type="button"
             @click="openCouponModal('new')"
           >
-            <i class="material-icons me-2">add_circle_outline</i>
+            <i class="material-icons-outlined me-2">add_circle_outline</i>
             新增優惠券
           </button>
         </div>

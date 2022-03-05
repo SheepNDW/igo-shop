@@ -14,7 +14,7 @@
           <button type="button" class="btn-close" @click="cancel"></button>
         </div>
         <div class="modal-body d-flex">
-          <i class="material-icons text-danger me-2">error</i>
+          <i class="material-icons-outlined text-danger me-2">error</i>
           <span>{{ text }}</span>
         </div>
         <div class="modal-footer">

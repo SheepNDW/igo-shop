@@ -24,7 +24,7 @@
             type="button"
             @click="openModal('new')"
           >
-            <i class="material-icons me-2">add_circle_outline</i>
+            <i class="material-icons-outlined me-2">add_circle_outline</i>
             新增產品
           </button>
         </div>
@@ -53,10 +53,10 @@
             <div class="col-2">{{ product.origin_price }}</div>
             <div class="col-2">{{ product.price }}</div>
             <div class="col-1 text-success" v-if="product.is_enabled">
-              <i class="material-icons">check_circle</i>
+              <i class="material-icons-outlined">check_circle</i>
             </div>
             <div class="col-1 text-danger" v-else>
-              <i class="material-icons">cancel</i>
+              <i class="material-icons-outlined">cancel</i>
             </div>
             <div class="col-3 col-md-2 d-flex justify-content-center">
               <button

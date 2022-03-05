@@ -21,7 +21,7 @@
             to="/admin/products"
             @click="closeNavHam"
           >
-            <i class="material-icons me-1">grid_view</i>
+            <i class="material-icons-outlined me-1">grid_view</i>
             產品管理
           </RouterLink>
         </li>
@@ -31,7 +31,7 @@
             to="/admin/coupon"
             @click="closeNavHam"
           >
-            <i class="material-icons me-1">local_atm</i>
+            <i class="material-icons-outlined me-1">local_atm</i>
             優惠券管理
           </RouterLink>
         </li>
@@ -41,7 +41,7 @@
             to="/admin/orders"
             @click="closeNavHam"
           >
-            <i class="material-icons me-1">shopping_cart_checkout</i>
+            <i class="material-icons-outlined me-1">shopping_cart_checkout</i>
             訂單管理
           </RouterLink>
         </li>
@@ -51,7 +51,7 @@
             to="/admin/article"
             @click="closeNavHam"
           >
-            <i class="material-icons me-1">article</i>
+            <i class="material-icons-outlined me-1">article</i>
             文章管理 (施工中)
           </RouterLink>
         </li>

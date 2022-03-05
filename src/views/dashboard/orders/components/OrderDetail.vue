@@ -37,14 +37,13 @@
 </template>
 
 <script>
-import { inject, ref } from 'vue'
+import { inject } from 'vue'
 export default {
   name: 'OrderDetail',
   setup() {
-    const isEditProduct = ref(false)
     const order = inject('tempOrder')
 
-    return { isEditProduct, order }
+    return { order }
   }
 }
 </script>

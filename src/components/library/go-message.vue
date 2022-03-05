@@ -1,7 +1,7 @@
 <template>
   <Transition name="down">
     <div class="go-message" :style="style[type]" v-show="visible">
-      <i class="material-icons">{{ style[type].icon }}</i>
+      <i class="material-icons-outlined">{{ style[type].icon }}</i>
       <span class="text">{{ text }}</span>
     </div>
   </Transition>
