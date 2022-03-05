@@ -1,5 +1,8 @@
 <template>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <nav
+    class="navbar sticky-top navbar-expand-lg"
+    :class="[dynamicClassList.nav, dynamicClassList.bg]"
+  >
     <div class="container">
       <!-- logo -->
       <h1>
@@ -19,18 +22,32 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <RouterLink class="nav-link" to="/products" @click="closeNavHam">
-              前台產品列表
+              產品列表
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/cart" @click="closeNavHam"
-              >購物車</RouterLink
-            >
+            <RouterLink class="nav-link" to="/cart" @click="closeNavHam">
+              關於我們
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/admin" @click="closeNavHam"
-              >前往後臺</RouterLink
+            <RouterLink
+              class="nav-link position-relative"
+              to="/cart"
+              @click="closeNavHam"
             >
+              <i class="material-icons-outlined">shopping_cart</i>
+              <span
+                class="position-absolute top-1 start-70 translate-middle badge rounded-pill bg-danger"
+              >
+                2
+              </span>
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" to="/admin" @click="closeNavHam">
+              前往後臺
+            </RouterLink>
           </li>
         </ul>
       </div>
@@ -39,7 +56,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { useBsCollapse } from '@/hooks'
 export default {
   name: 'AppNavbar',
@@ -47,7 +64,32 @@ export default {
     const navbarCollapseRef = ref(null)
     const { closeNavHam, toggleNavHam } = useBsCollapse(navbarCollapseRef)
 
-    return { navbarCollapseRef, closeNavHam, toggleNavHam }
+    // 動態綁定的 class 名稱
+    const dynamicClassList = reactive({
+      nav: 'navbar-light',
+      bg: 'bg-light'
+    })
+    // 控制 nav 選單的樣式函式
+    const navStyle = () => {
+      const windowY = window.scrollY
+
+      if (windowY > 100) {
+        dynamicClassList.nav = 'navbar-dark'
+        dynamicClassList.bg = 'bg-dark'
+      } else if (windowY < 80) {
+        dynamicClassList.nav = 'navbar-light'
+        dynamicClassList.bg = ''
+      }
+    }
+    // 掛載完成時替 window 掛上一個監聽事件
+    onMounted(() => window.addEventListener('scroll', navStyle))
+
+    return {
+      navbarCollapseRef,
+      closeNavHam,
+      toggleNavHam,
+      dynamicClassList
+    }
   }
 }
 </script>
@@ -58,5 +100,10 @@ export default {
 // logo 字體
 .navbar-brand {
   font-family: 'RocknRoll One', sans-serif;
+}
+
+.navbar {
+  transition: background-color 0.3s;
+  z-index: 1030;
 }
 </style>
