@@ -1,7 +1,8 @@
 import { ref, onMounted } from 'vue'
 import { uploadImage } from '@/api/upload'
-import Modal from 'bootstrap/js/dist/modal'
 import Message from '@/components/library/Message'
+import Modal from 'bootstrap/js/dist/modal'
+import Collapse from 'bootstrap/js/dist/collapse'
 
 // 上傳圖片 hook
 export const useUpload = () => {
@@ -41,9 +42,11 @@ export const useBsModal = (RefImpl) => {
   onMounted(() => {
     bsModal = new Modal(RefImpl.value)
   })
+
   const openModal = () => {
     bsModal.show()
   }
+
   const closeModal = () => {
     bsModal.hide()
   }
@@ -51,5 +54,28 @@ export const useBsModal = (RefImpl) => {
   return {
     openModal,
     closeModal
+  }
+}
+
+// bsCollapse hook
+export const useBsCollapse = (RefImpl) => {
+  let bsCollapse = null
+  onMounted(() => {
+    bsCollapse = new Collapse(RefImpl.value, {
+      toggle: false
+    })
+  })
+
+  const closeNavHam = () => {
+    bsCollapse.hide()
+  }
+
+  const toggleNavHam = () => {
+    bsCollapse.toggle()
+  }
+
+  return {
+    closeNavHam,
+    toggleNavHam
   }
 }
