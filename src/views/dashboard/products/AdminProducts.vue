@@ -1,6 +1,6 @@
 <template>
   <!-- 頭部區域 -->
-  <HeaderAdmin />
+  <AdminHeader />
   <!-- 卡片視圖 -->
   <div class="flex-fill overflow-auto p-3" style="position: relative">
     <!-- Loading 元件 -->
@@ -98,13 +98,13 @@
 import { ref } from 'vue'
 import { deleteProduct, getAdminProducts } from '@/api/product'
 import ProductModal from './components/ProductModal.vue'
-import HeaderAdmin from '@/components/AppHeaderAdmin.vue'
+import AdminHeader from '@/components/AdminHeader.vue'
 import Confirm from '@/components/library/Confirm'
 import Message from '@/components/library/Message'
 import { productCategory } from '@/api/constants'
 export default {
   name: 'AdminProducts',
-  components: { HeaderAdmin, ProductModal },
+  components: { AdminHeader, ProductModal },
   setup() {
     const isLoading = ref(true)
     const filter = ref('')

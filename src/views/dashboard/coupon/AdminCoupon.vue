@@ -1,6 +1,6 @@
 <template>
   <!-- 頭部區域 -->
-  <HeaderAdmin subTitle="優惠券管理" />
+  <AdminHeader subTitle="優惠券管理" />
   <!-- 卡片視圖 -->
   <div class="flex-fill overflow-auto p-3" style="position: relative">
     <!-- Loading 元件 -->
@@ -82,7 +82,7 @@
 
 <script>
 import { ref } from 'vue'
-import HeaderAdmin from '@/components/AppHeaderAdmin.vue'
+import AdminHeader from '@/components/AdminHeader.vue'
 import CouponModal from './components/CouponModal.vue'
 import {
   createCoupon,
@@ -95,7 +95,7 @@ import Message from '@/components/library/Message'
 import Confirm from '@/components/library/Confirm'
 export default {
   name: 'AdminCoupon',
-  components: { HeaderAdmin, CouponModal },
+  components: { AdminHeader, CouponModal },
   setup() {
     const isLoading = ref(true)
 

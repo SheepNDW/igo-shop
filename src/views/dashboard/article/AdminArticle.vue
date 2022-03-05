@@ -1,6 +1,6 @@
 <template>
   <!-- 頭部區域 -->
-  <HeaderAdmin subTitle="文章管理" />
+  <AdminHeader subTitle="文章管理" />
   <!-- 卡片視圖 -->
   <div class="flex-fill overflow-auto p-3" style="position: relative">
     <!-- Loading 元件 -->
@@ -77,13 +77,13 @@
 
 <script>
 import { ref } from 'vue'
-import HeaderAdmin from '@/components/AppHeaderAdmin.vue'
+import AdminHeader from '@/components/AdminHeader.vue'
 import ArticleModal from './components/ArticleModal.vue'
 import { getArticles } from '@/api/article'
 import dayjs from 'dayjs'
 export default {
   name: 'AdminArticle',
-  components: { HeaderAdmin, ArticleModal },
+  components: { AdminHeader, ArticleModal },
   setup() {
     const isLoading = ref(true)
 

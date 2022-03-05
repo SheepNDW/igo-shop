@@ -1,6 +1,6 @@
 <template>
   <!-- 頭部區域 -->
-  <HeaderAdmin subTitle="訂單管理" />
+  <AdminHeader subTitle="訂單管理" />
   <!-- 卡片視圖 -->
   <div class="flex-fill overflow-auto p-3" style="position: relative">
     <!-- Loading 元件 -->
@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import HeaderAdmin from '@/components/AppHeaderAdmin.vue'
+import AdminHeader from '@/components/AdminHeader.vue'
 import OrderModal from './components/OrderModal.vue'
 import { clearOrder, deleteOrder, getOrdersList } from '@/api/order'
 import { provide, readonly, ref } from 'vue'
@@ -89,7 +89,7 @@ import Confirm from '@/components/library/Confirm'
 import Message from '@/components/library/Message'
 export default {
   name: 'AdminOrders',
-  components: { HeaderAdmin, OrderModal },
+  components: { AdminHeader, OrderModal },
   setup() {
     const isLoading = ref(true)
     const orderModalCom = ref(null)

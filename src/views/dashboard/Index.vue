@@ -1,7 +1,7 @@
 <template>
   <div class="admin container-fluid row g-0 min-vh-100 bg-dark">
     <div class="col-lg-2 text-light">
-      <NavbarAdmin />
+      <AdminNavbar />
     </div>
     <div class="col-lg-10 bg-light min-vh-100 shadow-md">
       <RouterView v-if="checkSuccess"></RouterView>
@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import NavbarAdmin from '@/components/AppNavbarAdmin.vue'
+import AdminNavbar from '@/components/AdminNavbar.vue'
 import { onMounted, ref } from 'vue'
 import { userCheck } from '@/api/login'
 import { useRouter } from 'vue-router'
 export default {
   name: 'Dashboard',
-  components: { NavbarAdmin },
+  components: { AdminNavbar },
   setup() {
     const router = useRouter()
     const checkSuccess = ref(false)
