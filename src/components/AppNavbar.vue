@@ -1,13 +1,13 @@
 <template>
   <nav
-    class="navbar sticky-top navbar-expand-lg"
+    class="navbar sticky-top navbar-expand-lg shadow-sm"
     :class="[dynamicClassList.nav, dynamicClassList.bg]"
   >
     <div class="container">
       <!-- logo -->
       <h1>
         <RouterLink class="navbar-brand" to="/" @click="closeNavHam">
-          GO Shop
+          碁人館 - GO Shop
         </RouterLink>
       </h1>
       <!-- 漢堡選單 -->
@@ -22,11 +22,16 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <RouterLink class="nav-link" to="/products" @click="closeNavHam">
-              產品列表
+              認識圍棋
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/cart" @click="closeNavHam">
+            <RouterLink class="nav-link" to="/products" @click="closeNavHam">
+              線上商城
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link" to="/about" @click="closeNavHam">
               關於我們
             </RouterLink>
           </li>
@@ -42,11 +47,6 @@
               >
                 2
               </span>
-            </RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/admin" @click="closeNavHam">
-              前往後臺
             </RouterLink>
           </li>
         </ul>
@@ -67,7 +67,7 @@ export default {
     // 動態綁定的 class 名稱
     const dynamicClassList = reactive({
       nav: 'navbar-light',
-      bg: 'bg-light'
+      bg: 'bg-white'
     })
     // 控制 nav 選單的樣式函式
     const navStyle = () => {
@@ -78,7 +78,7 @@ export default {
         dynamicClassList.bg = 'bg-dark'
       } else if (windowY < 80) {
         dynamicClassList.nav = 'navbar-light'
-        dynamicClassList.bg = ''
+        dynamicClassList.bg = 'bg-white'
       }
     }
     // 掛載完成時替 window 掛上一個監聽事件
@@ -105,5 +105,9 @@ export default {
 .navbar {
   transition: background-color 0.3s;
   z-index: 1030;
+}
+
+.bg-white {
+  background: #fff;
 }
 </style>
