@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h2 class="h2 d-flex justify-content-center">這是首頁</h2>
+    <!-- 輪播圖 -->
+    <GoCarousel />
   </div>
 </template>
 
