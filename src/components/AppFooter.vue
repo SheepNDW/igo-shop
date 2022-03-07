@@ -21,16 +21,18 @@
         <!-- 版權資訊 -->
         <div class="copyright">
           <p>
-            <RouterLink to="/">進入首頁</RouterLink>
-            <RouterLink to="/go">認識圍棋</RouterLink>
             <RouterLink to="/products">線上商城</RouterLink>
             <RouterLink to="/about">關於我們</RouterLink>
-          </p>
-          <p>
-            <RouterLink to="/">CopyRight © 碁人館</RouterLink>
             <RouterLink to="/admin">
               <i class="material-icons-outlined">manage_accounts</i>進入後台
             </RouterLink>
+          </p>
+          <p>本站僅為個人練習使用，無任何商業用途</p>
+          <p>
+            <RouterLink to="/">CopyRight © 碁人館</RouterLink>
+            <a href="https://github.com/SheepNDW/igo-shop" target="_blank">
+              <i class="fab fa-github fs-4"></i>
+            </a>
           </p>
         </div>
       </div>
@@ -46,9 +48,6 @@ export default {
 
 <style lang="scss" scoped>
 .app-footer {
-  overflow: hidden;
-  background-color: #f5f5f5;
-  padding-top: 20px;
   a {
     text-decoration: none;
   }
