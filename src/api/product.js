@@ -20,6 +20,14 @@ export const getProductById = (id) => {
   return request(`/api/${path}/product/${id}`, 'get')
 }
 
+/**
+ * 取得所有的產品
+ * @returns Promise
+ */
+export const getProductsAll = () => {
+  return request(`/api/${path}/products/all`, 'get')
+}
+
 // 後台 API
 /**
  * 取得後台產品列表
