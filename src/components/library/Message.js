@@ -26,9 +26,9 @@ export default ({ type, text }) => {
   // render(虛擬節點, DOM容器)
   render(vnode, div)
 
-  // #5 2秒後銷毀元件
+  // #5 2.5秒後銷毀元件
   clearTimeout(timer)
   timer = setTimeout(() => {
     render(null, div)
-  }, 2000)
+  }, 2500)
 }
