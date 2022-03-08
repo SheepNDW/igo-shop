@@ -16,4 +16,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app-body {
+  min-height: 600px;
+}
+</style>
