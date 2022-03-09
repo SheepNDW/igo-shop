@@ -11,7 +11,7 @@ export default {
     // #2 獲取默認插巢內容
     // #3 把節點渲染在 breadcrumb 中
     const items = this.$slots.default()
-    return h('div', { class: 'breadcrumb py-4 px-2' }, items)
+    return h('div', { class: 'breadcrumb py-4 px-2 mb-0' }, items)
   }
 }
 </script>
