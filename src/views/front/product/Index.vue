@@ -1,8 +1,12 @@
 <template>
   <div class="container">
-    <div class="row mt-4">
-      <ProductsList />
-    </div>
+    <!-- 麵包屑 -->
+    <GoBread>
+      <GoBreadItem to="/">首頁</GoBreadItem>
+      <GoBreadItem>線上商城</GoBreadItem>
+    </GoBread>
+    <!-- 產品列表 -->
+    <ProductsList />
   </div>
 </template>
 
