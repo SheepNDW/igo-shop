@@ -42,6 +42,7 @@
               <div
                 class="picture"
                 :style="`background-image: url(${item.imageUrl})`"
+                @click="$router.push(`/product/${item.id}`)"
               />
             </div>
             <div class="card-body">
@@ -69,10 +70,23 @@
                 </template>
               </div>
               <div class="d-flex justify-content-center">
-                <button class="btn btn-outline-primary me-3" type="button">
+                <button
+                  class="btn btn-outline-primary me-3"
+                  type="button"
+                  @click="$router.push(`/product/${item.id}`)"
+                >
                   查看
                 </button>
-                <button class="btn btn-primary d-flex" type="button">
+                <button
+                  class="btn btn-primary d-flex align-items-center"
+                  :disabled="isLoadingItem === item.id"
+                  type="button"
+                  @click="addToCart(item.id)"
+                >
+                  <span
+                    v-show="isLoadingItem === item.id"
+                    class="spinner-grow spinner-grow-sm"
+                  ></span>
                   <i class="material-icons-round"> add_shopping_cart </i>
                 </button>
               </div>
@@ -94,6 +108,8 @@ import { computed, ref, watchEffect } from 'vue'
 import { productCategory } from '@/api/constants'
 import { getProductsAll } from '@/api/product'
 import { useFilterCategory, usePagination } from '@/hooks'
+import { useStore } from 'vuex'
+import Message from '@/components/library/Message'
 export default {
   name: 'ProductsList',
   setup() {
@@ -116,7 +132,7 @@ export default {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
 
-    // 對產品列表進行處理, 返回一個過濾後的列表
+    // --- 對產品列表進行處理, 返回一個過濾後的列表 ---
     const currentPage = ref(1)
     const filterProducts = ref(null)
     const pages = ref(null)
@@ -143,6 +159,18 @@ export default {
     const changePager = (page) => {
       currentPage.value = page
     }
+    // ---------------------------------------------
+
+    // 加入購物車功能
+    const isLoadingItem = ref('')
+    const store = useStore()
+    const addToCart = (id) => {
+      isLoadingItem.value = id
+      store.dispatch('cart/addToCart', { id, count: 1 }).then(() => {
+        isLoadingItem.value = ''
+        Message({ type: 'success', text: '已成功加入購物車! ' })
+      })
+    }
 
     return {
       categoryList: productCategory,
@@ -152,7 +180,9 @@ export default {
       isLoading,
       filterList,
       pages,
-      changePager
+      changePager,
+      addToCart,
+      isLoadingItem
     }
   }
 }
@@ -173,6 +203,7 @@ export default {
     &:hover {
       position: relative;
       transform: scale(1.25);
+      cursor: pointer;
       &:before {
         content: '';
         position: absolute;
