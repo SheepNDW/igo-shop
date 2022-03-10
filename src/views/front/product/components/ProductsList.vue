@@ -1,29 +1,40 @@
 <template>
   <div class="row">
     <!-- 左側分類欄 -->
-    <div class="col-md-3">
-      <ul class="category-panel list-group list-unstyled text-center">
-        <li>
-          <a
-            href="javascript:;"
-            class="list-group-item list-group-item-action active"
-          >
-            全部
-          </a>
-        </li>
-        <li v-for="cate in categoryList" :key="cate">
-          <a href="javascript:;" class="list-group-item list-group-item-action">
-            {{ cate }}
-          </a>
-        </li>
-      </ul>
+    <div class="col-md-3 mb-2">
+      <div class="scroll-content" style="position: sticky; top: 80px">
+        <ul class="category-panel list-group list-unstyled text-center mt-2">
+          <li>
+            <a
+              href="javascript:;"
+              class="list-group-item list-group-item-action"
+              :class="{ active: filter === 'all' }"
+              @click.prevent="filterChanger('all')"
+            >
+              全部
+            </a>
+          </li>
+          <li v-for="cate in categoryList" :key="cate">
+            <a
+              href="javascript:;"
+              class="list-group-item list-group-item-action"
+              :class="{ active: filter === cate }"
+              @click.prevent="filterChanger(cate)"
+            >
+              {{ cate }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
     <!-- 右側產品列表 -->
-    <div class="col-md-9">
+    <div class="col-md-9 position-relative">
+      <!-- Loading 元件 -->
+      <Loading :active="isLoading" :is-full-page="false" />
       <div class="row" v-if="productList">
         <div
           class="col-lg-4 col-md-6 mb-3"
-          v-for="item in productList"
+          v-for="item in filterList"
           :key="item.id"
         >
           <div class="card h-100 position-relative product-card">
@@ -59,7 +70,6 @@
               </div>
               <div class="d-flex justify-content-center">
                 <button class="btn btn-outline-primary me-3" type="button">
-                  <span class="spinner-grow spinner-grow-sm" />
                   查看
                 </button>
                 <button class="btn btn-primary d-flex" type="button">
@@ -70,28 +80,79 @@
           </div>
         </div>
       </div>
+      <GoPagination
+        v-if="pages?.total_pages > 1"
+        :pages="pages"
+        @change-page="changePager"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { productCategory } from '@/api/constants'
 import { getProductsAll } from '@/api/product'
+import { useFilterCategory, usePagination } from '@/hooks'
 export default {
   name: 'ProductsList',
   setup() {
-    const categoryList = ref(productCategory)
-
+    // 取得產品列表
     const productList = ref(null)
-    getProductsAll().then((data) => {
-      console.log(data)
+    const isLoading = ref(true)
+    const getProducts = async () => {
+      isLoading.value = true
+      const data = await getProductsAll()
       productList.value = data.products
+      isLoading.value = false
+    }
+    getProducts()
+
+    // filter: 當前選中之分類, 預設為 all
+    const filter = ref('all')
+    const filterChanger = (currentCate) => {
+      filter.value = currentCate
+      currentPage.value = 1
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    // 對產品列表進行處理, 返回一個過濾後的列表
+    const currentPage = ref(1)
+    const filterProducts = ref(null)
+    const pages = ref(null)
+
+    watchEffect(() => {
+      // 產品列表
+      const { newProducts } = useFilterCategory(filter.value, productList.value)
+      filterProducts.value = newProducts.value
+      // 分頁資料
+      const { pagination } = usePagination(
+        currentPage.value,
+        filterProducts.value
+      )
+      pages.value = pagination
+    })
+    // 用計算屬性計算出當前頁碼顯示的產品列表
+    const filterList = computed(() => {
+      return filterProducts?.value.slice(
+        (pages.value.current_page - 1) * 9,
+        pages.value.current_page * 9
+      )
     })
 
+    const changePager = (page) => {
+      currentPage.value = page
+    }
+
     return {
-      categoryList,
-      productList
+      categoryList: productCategory,
+      productList,
+      filter,
+      filterChanger,
+      isLoading,
+      filterList,
+      pages,
+      changePager
     }
   }
 }
