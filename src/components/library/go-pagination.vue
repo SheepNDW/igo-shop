@@ -6,7 +6,7 @@
           class="page-link"
           href="javascript:;"
           aria-label="Previous"
-          @click.prevent="$emit('change-page', pages.current_page - 1)"
+          @click.prevent="changePager(pages.current_page - 1)"
         >
           <span aria-hidden="true">&laquo;</span>
         </a>
@@ -20,7 +20,7 @@
         <a
           class="page-link"
           href="javascript:;"
-          @click.prevent="$emit('change-page', page)"
+          @click.prevent="changePager(page)"
           >{{ page }}</a
         >
       </li>
@@ -29,7 +29,7 @@
           class="page-link"
           href="javascript:;"
           aria-label="Next"
-          @click.prevent="$emit('change-page', pages.current_page + 1)"
+          @click.prevent="changePager(pages.current_page + 1)"
         >
           <span aria-hidden="true">&raquo;</span>
         </a>
@@ -46,6 +46,18 @@ export default {
       type: Object,
       default: () => ({})
     }
+  },
+  setup(props, { emit }) {
+    const changePager = (page) => {
+      emit('change-page', page)
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
+
+    return { changePager }
   }
 }
 </script>
