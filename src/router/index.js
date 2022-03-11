@@ -6,6 +6,7 @@ const Products = () => import('@/views/front/product/Index')
 const ProductDetail = () => import('@/views/front/product/components/ProductDetail')
 const Cart = () => import('@/views/front/cart/Index')
 const About = () => import('@/views/front/about/Index')
+const IntroduceGo = () => import('@/views/front/introduce/Index')
 
 const Login = () => import('@/views/front/login/Index')
 
@@ -21,10 +22,11 @@ const routes = [
     component: Layout,
     children: [
       { path: '/', component: Home },
-      { path: '/products', component: Products },
-      { path: '/product/:id', component: ProductDetail },
-      { path: '/cart', component: Cart },
-      { path: '/about', component: About }
+      { path: 'products', component: Products },
+      { path: 'product/:id', component: ProductDetail },
+      { path: 'cart', component: Cart },
+      { path: 'about', component: About },
+      { path: 'whatisgo', component: IntroduceGo }
     ]
   },
   // 登入

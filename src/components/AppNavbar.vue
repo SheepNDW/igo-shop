@@ -21,7 +21,7 @@
       >
         <ul class="navbar-nav">
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/products" @click="closeNavHam">
+            <RouterLink class="nav-link" to="/whatisgo" @click="closeNavHam">
               認識圍棋
             </RouterLink>
           </li>
@@ -76,7 +76,7 @@ export default {
       if (windowY > 100) {
         dynamicClassList.nav = 'navbar-dark'
         dynamicClassList.bg = 'bg-dark'
-      } else if (windowY < 80) {
+      } else if (windowY < 100) {
         dynamicClassList.nav = 'navbar-light'
         dynamicClassList.bg = 'bg-white'
       }
