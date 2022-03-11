@@ -79,7 +79,12 @@ import { watch, inject, ref } from 'vue'
 import dayjs from 'dayjs'
 export default {
   name: 'UserInfo',
-  setup() {
+  props: {
+    isEdit: {
+      type: Boolean
+    }
+  },
+  setup(props, { emit }) {
     const isEditInfo = ref(false)
     const user = ref(null)
     const message = ref(null)
@@ -102,6 +107,7 @@ export default {
     // 完成更改時統一將此次的改動更新到 tempOrder
     const edit = () => {
       isEditInfo.value = !isEditInfo.value
+      emit('change-edit', isEditInfo.value)
       // 如果是完成, 則通知外層元件去修改 tempOrder
       if (!isEditInfo.value) {
         updateTempUser(user.value)

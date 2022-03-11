@@ -31,7 +31,7 @@
           </div>
           <div class="row g-3 d-md-flex">
             <!-- 訂購人資訊 -->
-            <UserInfo />
+            <UserInfo :is-edit="isEdit" @change-edit="changeEdit" />
             <!-- 訂單細項 -->
             <OrderDetail />
           </div>
@@ -40,7 +40,12 @@
           <button type="button" class="btn btn-secondary" @click="closeModal">
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="submit">
+          <button
+            type="button"
+            class="btn btn-primary"
+            :disabled="isEdit"
+            @click="submit"
+          >
             確認修改
           </button>
         </div>
@@ -63,6 +68,12 @@ export default {
   setup(props, { emit }) {
     const orderModal = ref(null)
     const { openModal, closeModal } = useBsModal(orderModal)
+
+    // 控制是否可以點擊確認修改
+    const isEdit = ref(false)
+    const changeEdit = (status) => {
+      isEdit.value = status
+    }
 
     // 接收外層元件提供的 tempOrder 並將付款狀態(is_paid)賦值給 paidStatus 去做更改
     const order = inject('tempOrder')
@@ -95,7 +106,9 @@ export default {
       order,
       paidStatus,
       updatePaid,
-      submit
+      submit,
+      isEdit,
+      changeEdit
     }
   }
 }
