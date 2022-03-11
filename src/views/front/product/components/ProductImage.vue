@@ -99,6 +99,7 @@ export default {
 .image-box {
   z-index: 500;
   .large {
+    display: none;
     position: absolute;
     top: 0;
     left: 420px;
@@ -108,6 +109,9 @@ export default {
     background-repeat: no-repeat;
     background-size: 800px 800px;
     background-color: #f8f8f8;
+    @media (min-width: 992px) {
+      display: block;
+    }
   }
   .middle {
     height: 400px;
@@ -115,12 +119,16 @@ export default {
     position: relative;
     cursor: move;
     .layer {
+      display: none;
       position: absolute;
       left: 0;
       top: 0;
       width: 200px;
       height: 200px;
       background: rgba(0, 0, 0, 0.2);
+      @media (min-width: 992px) {
+        display: block;
+      }
     }
     img {
       object-fit: cover;
