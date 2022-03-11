@@ -132,13 +132,21 @@ export default {
     const handlerUpdate = async (coupon) => {
       // 修改
       if (isEdit.value) {
-        await updateCoupon(coupon)
-        Message({ type: 'success', text: '已更新優惠券' })
+        try {
+          await updateCoupon(coupon)
+          Message({ type: 'success', text: '已更新優惠券' })
+        } catch (err) {
+          Message({ type: 'error', text: '修改失敗 請確認是否填寫正確' })
+        }
       }
       // 新增
       if (!isEdit.value) {
-        const data = await createCoupon(coupon)
-        Message({ type: 'success', text: data.message })
+        try {
+          const data = await createCoupon(coupon)
+          Message({ type: 'success', text: data.message })
+        } catch (err) {
+          Message({ type: 'error', text: '新增失敗 請確認是否填寫正確' })
+        }
       }
       // 關閉 Modal 並更新畫面
       couponModalCom.value.closeModal()
