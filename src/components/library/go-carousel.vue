@@ -1,5 +1,5 @@
 <template>
-  <h2 class="fs-4 text-center my-5">{{ title }}</h2>
+  <h2 class="fs-4 text-center my-5" v-if="title">{{ title }}</h2>
   <Swiper
     :breakpoints="breakpoints"
     :loop="false"
@@ -54,7 +54,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: '人氣推薦'
+      default: ''
     },
     slides: {
       type: Array,

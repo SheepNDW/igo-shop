@@ -6,7 +6,7 @@
   <!-- 首頁主要區塊 -->
   <HomeMain />
   <!-- 首頁人氣推薦 -->
-  <GoCarousel :slides="hotProducts" />
+  <GoCarousel :slides="hotProducts" title="人氣推薦" />
 </template>
 
 <script>
