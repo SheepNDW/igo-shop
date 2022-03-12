@@ -35,20 +35,8 @@
               關於我們
             </RouterLink>
           </li>
-          <li class="nav-item">
-            <RouterLink
-              class="nav-link position-relative"
-              to="/cart"
-              @click="closeNavHam"
-            >
-              <i class="material-icons-outlined">shopping_cart</i>
-              <span
-                class="position-absolute top-1 start-70 translate-middle badge rounded-pill bg-danger"
-              >
-                2
-              </span>
-            </RouterLink>
-          </li>
+          <!-- 使用頭部購物車元件 -->
+          <AppNavbarCart @close-nav="closeNavHam" />
         </ul>
       </div>
     </div>
@@ -58,8 +46,10 @@
 <script>
 import { onMounted, reactive, ref } from 'vue'
 import { useBsCollapse } from '@/hooks'
+import AppNavbarCart from './AppNavbarCart.vue'
 export default {
   name: 'AppNavbar',
+  components: { AppNavbarCart },
   setup() {
     const navbarCollapseRef = ref(null)
     const { closeNavHam, toggleNavHam } = useBsCollapse(navbarCollapseRef)

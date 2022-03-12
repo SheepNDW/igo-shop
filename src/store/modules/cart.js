@@ -13,6 +13,11 @@ export default {
       }
     }
   },
+  getters: {
+    totalQty(state) {
+      return state.cartData.carts.reduce((pre, curr) => pre + curr?.qty, 0)
+    }
+  },
   mutations: {
     // 設置購物車
     SET_CART(state, payload) {
