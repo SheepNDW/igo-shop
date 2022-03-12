@@ -17,7 +17,7 @@
       <GoBreadItem>{{ product.title }}</GoBreadItem>
     </GoBread>
     <!-- 產品資訊 -->
-    <div class="row justify-content-center product-info py-5">
+    <div class="row justify-content-center product-info py-5 mb-3">
       <!-- media -->
       <ProductImage :images="product.imagesUrl" />
       <!-- desc -->
@@ -38,8 +38,22 @@
         </button>
       </div>
     </div>
-    <!-- 產品詳情 -->
     <!-- 相關推薦 -->
+    <ProductRelevant />
+    <!-- 產品描述 -->
+    <div class="row justify-content-center product-info py-5">
+      <div class="good-detail col-12 col-lg-6">
+        <div class="h3 text-center pb-2 border-bottom">商品詳情</div>
+        <p style="color: #666">{{ product.content }}</p>
+        <ul class="list-unstyled">
+          <li v-for="img in product.imagesUrl" :key="img">
+            <img class="img-fluid mb-2" :src="img" alt="" />
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 注意事項 -->
+    <ProductWarn />
   </div>
 </template>
 
@@ -50,10 +64,12 @@ import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import ProductImage from './ProductImage.vue'
 import ProductName from './ProductName.vue'
+import ProductWarn from './ProductWarn.vue'
+import ProductRelevant from './ProductRelevant.vue'
 import Message from '@/components/library/Message'
 export default {
   name: 'ProductDetail',
-  components: { ProductImage, ProductName },
+  components: { ProductImage, ProductName, ProductWarn, ProductRelevant },
   setup() {
     const isLoading = ref(true)
     // 獲取單一產品詳情
