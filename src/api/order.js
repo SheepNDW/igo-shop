@@ -11,6 +11,24 @@ export const createOrder = (order) => {
   return request(`/api/${path}/order`, 'post', { data: order })
 }
 
+/**
+ * 根據 ID 查詢訂單
+ * @param {String} orderId - 訂單ID
+ * @returns Promise
+ */
+export const getOrderById = (orderId) => {
+  return request(`/api/${path}/order/${orderId}`, 'get')
+}
+
+/**
+ * 付款
+ * @param {String} orderId - 訂單ID
+ * @returns Promise
+ */
+export const payOrder = (orderId) => {
+  return request(`/api/${path}/pay/${orderId}`, 'post')
+}
+
 // 後台 API
 /**
  * 取得後台訂單列表

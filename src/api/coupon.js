@@ -1,6 +1,7 @@
 import request from '@/utils/request'
 const path = `${process.env.VUE_APP_PATH}`
 
+// 後台 API
 /**
  * 取得優惠券列表
  * @param {Integer} page - 當前頁碼
@@ -35,4 +36,14 @@ export const updateCoupon = (coupon) => {
  */
 export const deleteCoupon = (id) => {
   return request(`/api/${path}/admin/coupon/${id}`, 'delete')
+}
+
+// 前台 API
+/**
+ * 使用優惠券
+ * @param {Object} code - { code: '折扣碼' }
+ * @returns Promise
+ */
+export const useCoupon = (code) => {
+  return request(`/api/${path}/coupon`, 'post', { data: code })
 }

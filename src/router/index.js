@@ -7,6 +7,9 @@ const ProductDetail = () => import('@/views/front/product/components/ProductDeta
 const Cart = () => import('@/views/front/cart/Index')
 const About = () => import('@/views/front/about/Index')
 const IntroduceGo = () => import('@/views/front/introduce/Index')
+const Checkout = () => import('@/views/front/pay/Checkout')
+const PayOrder = () => import('@/views/front/pay/PayOrder')
+const PaidResult = () => import('@/views/front/pay/Result')
 
 const Login = () => import('@/views/front/login/Index')
 
@@ -26,7 +29,10 @@ const routes = [
       { path: 'product/:id', component: ProductDetail },
       { path: 'cart', component: Cart },
       { path: 'about', component: About },
-      { path: 'whatisgo', component: IntroduceGo }
+      { path: 'whatisgo', component: IntroduceGo },
+      { path: 'checkout', component: Checkout },
+      { path: 'checkout/:id', component: PayOrder },
+      { path: 'checkout/result/:id', component: PaidResult }
     ]
   },
   // 登入
