@@ -1,103 +1,110 @@
 <template>
-  <div class="container mt-3">
-    <Loading :active="isLoading" />
-    <!-- 購物車列表 -->
-    <div class="text-end">
-      <button
-        @click="clearAllCarts"
-        class="btn btn-outline-danger"
-        type="button"
-        :disabled="cartData?.carts?.length === 0"
-      >
-        清空購物車
-      </button>
+  <div class="banner">
+    <div class="container">
+      <div class="h-100 p-5">
+        <h2 class="text-center text-primary fw-bold my-5">我的購物車</h2>
+      </div>
     </div>
-    <table class="table align-middle">
-      <thead>
-        <tr>
-          <th></th>
-          <th>品名</th>
-          <th style="width: 150px">數量/單位</th>
-          <th class="col-md-2">單價</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-if="cartData.carts.length === 0">
-          <td colspan="6">
-            <CartNone />
-          </td>
-        </tr>
-        <template v-if="cartData.carts.length > 0">
-          <tr v-for="item in cartData.carts" :key="item.id">
-            <td>
-              <button
-                @click="removeCartItem(item.id)"
-                type="button"
-                class="btn btn-outline-danger btn-sm"
-              >
-                x
-              </button>
-            </td>
-            <td>
-              {{ item.product.title }}
-            </td>
-            <td>
-              <div class="input-group input-group-sm">
-                <div class="input-group mb-3">
-                  <select
-                    v-model="item.qty"
-                    class="form-select"
-                    @change="updateCartItem(item)"
-                    :disabled="isLoadingItem === item.id"
-                  >
-                    <option
-                      :value="num"
-                      v-for="num in 20"
-                      :key="`${num}${item.id}`"
-                    >
-                      {{ num }}
-                    </option>
-                  </select>
-                  <span class="input-group-text" id="basic-addon2">
-                    {{ item.product.unit }}
-                  </span>
-                </div>
-              </div>
-            </td>
-            <td class="text-end">
-              <!-- <small class="text-success">折扣價：</small> -->
-              NT${{ item.total }}
-            </td>
-          </tr>
-        </template>
-      </tbody>
-      <tfoot v-if="cartData.carts.length > 0">
-        <tr>
-          <td colspan="3" class="text-end">總計</td>
-          <td class="text-end">{{ cartData.total }}</td>
-        </tr>
-        <tr>
-          <td colspan="3" class="text-end text-success">折扣價</td>
-          <td class="text-end text-success">
-            {{ cartData.final_total }}
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-    <div class="my-5 row justify-content-center">
-      <CheckoutForm />
+  </div>
+  <div class="container position-relative">
+    <!-- 麵包屑 -->
+    <GoBread>
+      <GoBreadItem to="/">首頁</GoBreadItem>
+      <GoBreadItem>購物車</GoBreadItem>
+    </GoBread>
+    <!-- loading 元件 -->
+    <Loading :active="isLoading" :is-full-page="false" />
+    <!-- 購物清單 -->
+    <ul
+      class="row g-0 list-unstyled rounded-0 p-2 carts-list text-nowrap border-bottom border-2 mb-0"
+    >
+      <li class="col-3 col-md-5">商品資訊</li>
+      <li class="col-1 d-none d-md-block">單價</li>
+      <li class="col-5 col-md-3">數量</li>
+      <li class="col-2 col-md-1">小計</li>
+      <li class="col-2">操作</li>
+    </ul>
+    <ul class="list-group list-group-flush shadow-sm mb-4">
+      <!-- 購物車為空 -->
+      <li class="list-group-item p-2" v-if="cartData.carts.length === 0">
+        <div class="col-12">
+          <CartNone />
+        </div>
+      </li>
+      <!-- 購物車有商品 -->
+      <template v-if="cartData.carts.length > 0">
+        <li
+          class="list-group-item p-2"
+          v-for="item in cartData.carts"
+          :key="item.id"
+        >
+          <RouterLink to="/" class="col-md-2 d-none d-md-block">
+            <img class="product-img" :src="item.product.imageUrl" alt="" />
+          </RouterLink>
+          <p class="ellipsis col-3 col-md-3 text-start my-auto">
+            {{ item.product.title }}
+          </p>
+          <div class="col-1 d-none d-md-block">{{ item.product.price }}</div>
+          <div class="col-5 col-md-3 d-flex justify-content-center">
+            <GoNumbox
+              @change="($event) => updateCount(item.id, $event)"
+              :modelValue="item.qty"
+            />
+          </div>
+          <div class="col-2 col-md-1">{{ item.total }}</div>
+          <div class="col-2">
+            <i
+              v-show="isLoadingItem !== item.id"
+              class="material-icons-outlined"
+              @click="removeCartItem(item.id)"
+              >close</i
+            >
+            <div
+              v-show="isLoadingItem === item.id"
+              class="spinner-border spinner-border-sm"
+              role="status"
+            ></div>
+          </div>
+        </li>
+      </template>
+    </ul>
+    <div class="row action">
+      <button
+        type="btn"
+        class="col-2 btn btn-outline-danger"
+        :disabled="cartData?.carts?.length === 0"
+        @click="clearAllCarts"
+      >
+        <p class="d-none d-md-block my-auto">清空購物車</p>
+        <p class="d-block d-md-none my-auto">清空</p>
+      </button>
+      <div class="col-10 total d-flex justify-content-end">
+        <p class="d-none d-md-block my-auto">共 {{ totalQty }} 件商品，</p>
+        <p class="my-auto">
+          合計：<span class="red">${{ cartData.final_total }}</span>
+        </p>
+        <button
+          type="button"
+          class="btn btn-primary"
+          :disabled="cartData?.carts?.length === 0"
+          @click="$router.push('/checkout')"
+        >
+          下單結帳
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import CheckoutForm from './components/CheckoutForm.vue'
-import CartNone from './components/CartNone.vue'
 import { useStore } from 'vuex'
 import { computed, ref } from 'vue'
+import CartNone from './components/CartNone.vue'
+import Confirm from '@/components/library/Confirm'
+import Message from '@/components/library/Message'
 export default {
   name: 'Cart',
-  components: { CheckoutForm, CartNone },
+  components: { CartNone },
   setup() {
     const isLoading = ref(true)
     const isLoadingItem = ref('')
@@ -111,19 +118,35 @@ export default {
 
     // 刪除購物車內容
     const removeCartItem = (id) => {
-      store.dispatch('cart/removeCart', id)
+      Confirm({ text: '您確定要刪除該項商品嗎' })
+        .then(() => {
+          isLoadingItem.value = id
+          store.dispatch('cart/removeCart', id).then(() => {
+            Message({ type: 'success', text: '已成功刪除' })
+            isLoadingItem.value = ''
+          })
+        })
+        .catch((e) => {})
     }
 
     // 清空購物車 (全部刪除)
     const clearAllCarts = () => {
-      store.dispatch('cart/clearAllCarts')
+      Confirm({ text: '您確定要刪除所有商品嗎' })
+        .then(() => {
+          isLoading.value = true
+          store.dispatch('cart/clearAllCarts').then(() => {
+            Message({ type: 'success', text: '已成功刪除' })
+            isLoading.value = false
+          })
+        })
+        .catch((e) => {})
     }
 
-    // 更新購物車
-    const updateCartItem = (item) => {
-      isLoadingItem.value = item.id
+    // 更新商品數量
+    const updateCount = (id, qty) => {
+      isLoadingItem.value = id
       store
-        .dispatch('cart/updateCart', { prodcutId: item.id, count: item.qty })
+        .dispatch('cart/updateCart', { prodcutId: id, count: qty })
         .then(() => {
           isLoadingItem.value = ''
         })
@@ -135,8 +158,58 @@ export default {
       cartData,
       removeCartItem,
       clearAllCarts,
-      updateCartItem
+      updateCount,
+      totalQty: computed(() => store.getters['cart/totalQty'])
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.banner {
+  background: url(https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1646906649618.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=CWlLx4ZRvvK%2BaQ3lkj74ddJ6n244DAp7h3UalpnmuJMwkEFDOcgnC0tUAcDWrDr1wuOghzELVHJFt5ARZiEbrk0PV6qDs2132NCd8gam1ShYiREEUNO1oWKM1B4gWbiVlDgrH67uhongS4aoHwKi%2BMhwzNgjVbZPyyli5sXfejvINdASvrlai2f%2F6A0ENQApZokKTMPz3kKucjXfr4WYFpGoI7ulsuCLAFn7b%2FwS2oEmMZ4eUFxEcpusJWHPNpEvqF7uzUMQ%2FjaVaLzbKNi8viDufCpukNY8iTt9XdukL6cBQQHlybOX%2BBKuO5XCwgNt4Xd1%2F%2Ft4VWHm%2Fh3N69JKLA%3D%3D)
+    center center / cover;
+}
+// 標題欄
+.carts-list {
+  text-align: center;
+  background: #e9ecef;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.product-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+}
+
+i {
+  cursor: pointer;
+}
+
+.action {
+  display: flex;
+  background: #fff;
+  margin: 20px 0;
+
+  height: 80px;
+  align-items: center;
+  font-size: 16px;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.red {
+  color: #cf4444;
+  font-size: 18px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+</style>

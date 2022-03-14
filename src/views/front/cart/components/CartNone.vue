@@ -1,8 +1,12 @@
 <template>
   <div class="cart-none">
     <img src="@/assets/images/none.png" alt="" />
-    <p>購物車内暫時没有商品</p>
-    <a href="#" class="btn btn-primary" @click.prevent="$router.push('/')">
+    <p>購物車内沒有商品唷</p>
+    <a
+      href="#"
+      class="btn btn-primary"
+      @click.prevent="$router.push('/products')"
+    >
       繼續逛逛
     </a>
   </div>
