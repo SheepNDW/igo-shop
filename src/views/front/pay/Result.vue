@@ -19,7 +19,9 @@
         <span class="material-icons-outlined green">check_circle</span>
         <p class="tit">訂單支付成功</p>
         <p class="tip">我們將盡快為您發貨，收貨期間請保持手機暢通</p>
-        <p>支付方式：<span>ATM轉帳</span></p>
+        <p>
+          支付方式：<span>{{ order.paymentMethod }}</span>
+        </p>
         <p>
           本次交易金額：<span class="red">${{ Math.round(order?.total) }}</span>
         </p>
@@ -39,17 +41,23 @@ import { ref } from 'vue'
 import PayStep from './components/PayStep.vue'
 import { getOrderById } from '@/api/order'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 export default {
   name: 'PaidResult',
   components: { PayStep },
   setup() {
     const isLoading = ref(true)
 
+    const store = useStore()
     const route = useRoute()
     const order = ref(null)
     getOrderById(route.params.id).then((data) => {
       order.value = data.order
-      isLoading.value = false
+
+      // 刷新購物車
+      return store.dispatch('cart/findCart').then(() => {
+        isLoading.value = false
+      })
     })
 
     return {

@@ -73,13 +73,9 @@
             <p v-else class="text-danger">尚未付款</p>
           </li>
           <li class="list-group-item">
-            <small>請選擇支付方式</small>
-            <div class="input-group">
-              <select class="form-select" v-model="paymentMethods">
-                <option :value="method" v-for="method in methods" :key="method">
-                  {{ method }}
-                </option>
-              </select>
+            <small>支付方式</small>
+            <div class="d-flex justify-content-between">
+              <p>{{ order.paymentMethod }}</p>
               <button
                 @click="handlerPayment"
                 type="button"
@@ -100,14 +96,11 @@ import { ref } from 'vue'
 import PayStep from './components/PayStep.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getOrderById, payOrder } from '@/api/order'
-import Message from '@/components/library/Message'
 export default {
   name: 'PayOrder',
   components: { PayStep },
   setup() {
     const isLoading = ref(true)
-    const paymentMethods = ref('')
-    const methods = ['信用卡', 'ATM轉帳', '取貨付款']
 
     // 獲取訂單資料
     const route = useRoute()
@@ -120,9 +113,6 @@ export default {
     // 前往付款
     const router = useRouter()
     const handlerPayment = () => {
-      if (paymentMethods.value === '') {
-        return Message({ text: '請選擇付款方式! ' })
-      }
       isLoading.value = true
       payOrder(route.params.id).then(() => {
         router.push(`/checkout/result/${route.params.id}`)
@@ -132,8 +122,6 @@ export default {
 
     return {
       isLoading,
-      paymentMethods,
-      methods,
       order,
       handlerPayment
     }

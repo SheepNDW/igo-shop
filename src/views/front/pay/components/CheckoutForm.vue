@@ -75,6 +75,24 @@
     </div>
 
     <div class="mb-3">
+      <label for="address" class="form-label">
+        請選擇付款方式<span class="text-danger">*</span>
+      </label>
+      <Field
+        as="select"
+        name="付款方式"
+        class="form-select"
+        :class="{ 'is-invalid': errors['付款方式'] }"
+        v-model="form.paymentMethod"
+      >
+        <option :value="method" v-for="method in methods" :key="method">
+          {{ method }}
+        </option>
+      </Field>
+      <ErrorMessage name="付款方式" class="invalid-feedback"></ErrorMessage>
+    </div>
+
+    <div class="mb-3">
       <label for="message" class="form-label">留言</label>
       <textarea
         id="message"
@@ -101,6 +119,7 @@ export default {
   name: 'CheckoutForm',
   components: { Form, Field, ErrorMessage },
   setup() {
+    const methods = ['信用卡', 'ATM轉帳', '取貨付款']
     // 表單資料物件
     const form = reactive({
       user: {
@@ -109,14 +128,16 @@ export default {
         tel: '',
         address: ''
       },
-      message: ''
+      message: '',
+      paymentMethod: ''
     })
 
     const mySchema = {
       姓名: 'required',
       email: 'required|email',
       mobile: schema.mobile,
-      地址: 'required'
+      地址: 'required',
+      付款方式: 'required'
     }
 
     // 送出並生成訂單方法
@@ -142,7 +163,7 @@ export default {
       }
     }
 
-    return { form, schema: mySchema, formRef, submitOrder }
+    return { form, methods, schema: mySchema, formRef, submitOrder }
   }
 }
 </script>
