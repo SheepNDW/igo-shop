@@ -20,7 +20,7 @@
         <p class="tit">訂單支付成功</p>
         <p class="tip">我們將盡快為您發貨，收貨期間請保持手機暢通</p>
         <p>
-          支付方式：<span>{{ order.paymentMethod }}</span>
+          支付方式：<span>{{ order?.user?.payment_method }}</span>
         </p>
         <p>
           本次交易金額：<span class="red">${{ Math.round(order?.total) }}</span>

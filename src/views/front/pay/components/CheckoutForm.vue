@@ -83,7 +83,7 @@
         name="付款方式"
         class="form-select"
         :class="{ 'is-invalid': errors['付款方式'] }"
-        v-model="form.paymentMethod"
+        v-model="form.user.payment_method"
       >
         <option :value="method" v-for="method in methods" :key="method">
           {{ method }}
@@ -126,10 +126,10 @@ export default {
         name: '',
         email: '',
         tel: '',
-        address: ''
+        address: '',
+        payment_method: ''
       },
-      message: '',
-      paymentMethod: ''
+      message: ''
     })
 
     const mySchema = {

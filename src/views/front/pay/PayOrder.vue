@@ -75,7 +75,7 @@
           <li class="list-group-item">
             <small>支付方式</small>
             <div class="d-flex justify-content-between">
-              <p>{{ order.paymentMethod }}</p>
+              <p>{{ order.user.payment_method }}</p>
               <button
                 @click="handlerPayment"
                 type="button"
