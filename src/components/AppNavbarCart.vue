@@ -7,6 +7,7 @@
     >
       <i class="material-icons-outlined">shopping_cart</i>
       <span
+        v-show="totalQty"
         class="position-absolute top-1 start-70 translate-middle badge rounded-pill bg-danger"
       >
         {{ totalQty }}
