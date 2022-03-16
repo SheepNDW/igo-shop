@@ -1,6 +1,6 @@
 <template>
   <div ref="ArticleModalRef" class="modal fade">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header bg-dark p-3 text-light">
           <h5 class="modal-title" v-if="isEdit">編輯貼文</h5>
@@ -150,6 +150,15 @@ import { useBsModal } from '@/hooks'
 import CKEditor from '@ckeditor/ckeditor5-vue'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import dayjs from 'dayjs'
+import MyUploadAdapter from '@/utils/myUploadAdapter'
+
+// 自訂圖片上傳 Plugin
+function MyCustomUploadAdapterPlugin(editor) {
+  editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+    return new MyUploadAdapter(loader)
+  }
+}
+
 export default {
   name: 'ArticleModal',
   components: {
@@ -195,7 +204,8 @@ export default {
     // CKEditor 配置
     const editor = ClassicEditor
     const editorConfig = {
-      toolbar: ['heading', 'bold', 'italic', '|', 'link']
+      toolbar: ['heading', 'bold', 'italic', '|', 'link'],
+      extraPlugins: [MyCustomUploadAdapterPlugin]
     }
 
     return {
@@ -210,3 +220,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.ck-editor__editable_inline {
+  min-height: 300px;
+}
+</style>
