@@ -11,6 +11,15 @@ export const getArticles = (page = 1) => {
 }
 
 /**
+ * 獲取特定 ID 文章
+ * @param {String} id - 文章ID
+ * @returns Promise
+ */
+export const getArticleById = (id) => {
+  return request(`/api/${path}/admin/article/${id}`, 'get')
+}
+
+/**
  * 新增文章
  * @param {Object} article - 要新增的貼文
  * @returns Promise
@@ -24,7 +33,7 @@ export const postArticle = (article) => {
  * @param {Object} article - 要修改的貼文
  * @returns Promise
  */
-export const updateArticle = (article) => {
+export const editArticle = (article) => {
   return request(`/api/${path}/admin/article/${article.id}`, 'put', { data: article })
 }
 
