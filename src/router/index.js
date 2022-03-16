@@ -7,6 +7,7 @@ const ProductDetail = () => import('@/views/front/product/components/ProductDeta
 const Cart = () => import('@/views/front/cart/Index')
 const About = () => import('@/views/front/about/Index')
 const IntroduceGo = () => import('@/views/front/introduce/Index')
+const GoArticle = () => import('@/views/front/introduce/components/ArticleDetail')
 const Checkout = () => import('@/views/front/pay/Checkout')
 const PayOrder = () => import('@/views/front/pay/PayOrder')
 const PaidResult = () => import('@/views/front/pay/Result')
@@ -30,6 +31,7 @@ const routes = [
       { path: 'cart', component: Cart },
       { path: 'about', component: About },
       { path: 'whatisgo', component: IntroduceGo },
+      { path: 'whatisgo/:id', component: GoArticle },
       { path: 'checkout', component: Checkout },
       { path: 'checkout/:id', component: PayOrder },
       { path: 'checkout/result/:id', component: PaidResult }
