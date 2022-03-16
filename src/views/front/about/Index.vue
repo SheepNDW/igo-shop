@@ -1,13 +1,6 @@
 <template>
+  <GoBanner title="aboutUs">關於我們</GoBanner>
   <div class="container">
-    <!-- banner -->
-    <div class="about-banner position-relative">
-      <h2
-        class="h2 bg-subTitle text-center text-light position-absolute px-4 py-3"
-      >
-        關於我們
-      </h2>
-    </div>
     <!-- 麵包屑 -->
     <GoBread>
       <GoBreadItem to="/">首頁</GoBreadItem>
@@ -64,27 +57,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bg-subTitle {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.about-banner {
-  background: url(https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1646796873030.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Ngy3Nihlqd4yd9GJ0ARt%2BfbB6p2GvhemWH%2Fd2MfKIKuB%2BzK7F1QFYhlOuSVi4UaM%2FiNnvdKfRn8c9JJkNpU0UV1GlWoCyyySh4ULysOHBW3Bd36LZekr6NoR4ODdPBpYVkACyiepWs5CK%2BAzJkCkyCejO1OIoXF9JFdSuqxJdcWw6IzhRzXxcQc2O4x4Lx2ybvTFejhyklgW%2FQrg8ftEWmqIKrOW0niysYqfgGcrLv2AUw1bZjy%2FDVutxYFCivpkUZ7nkSOWbwG0XOjWrK3Pcjbxr1wvMKUdNdWUub66jhsmrMElv8Qf4dDpajUa6s6SU7ZKdkK6DHUzSvjPC6o4Rg%3D%3D);
-
-  height: 400px;
-  position: relative;
-  background-size: cover;
-  background-position: center center;
-  opacity: 0.8;
-  border-radius: 1rem;
-  @media (max-width: 767.98px) {
-    height: 250px;
-  }
-}
-
 .about-us {
   height: 600px;
   @media (max-width: 767.98px) {
