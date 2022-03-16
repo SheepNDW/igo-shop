@@ -1,6 +1,7 @@
 import request from '@/utils/request'
 const path = `${process.env.VUE_APP_PATH}`
 
+// 後台 API
 /**
  * 獲取訂單列表
  * @param {Integer} page - 當前頁數
@@ -44,4 +45,23 @@ export const editArticle = (article) => {
  */
 export const deleteArticle = (id) => {
   return request(`/api/${path}/admin/article/${id}`, 'delete')
+}
+
+// 前台 API
+/**
+ * 取得前台文章列表
+ * @param {Integer} page - 當前頁碼
+ * @returns Promise
+ */
+export const getFrontArticles = (page = 1) => {
+  return request(`/api/${path}/articles?page=${page}`, 'get')
+}
+
+/**
+ * 根據文章ID查詢對應文章
+ * @param {String} id - 文章ID
+ * @returns Promise
+ */
+export const getFrontArticleByID = (id) => {
+  return request(`/api/${path}/article/${id}`, 'get')
 }
