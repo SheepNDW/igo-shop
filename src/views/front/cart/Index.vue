@@ -38,7 +38,10 @@
           v-for="item in cartData.carts"
           :key="item.id"
         >
-          <RouterLink to="/" class="col-md-2 d-none d-md-block">
+          <RouterLink
+            :to="`/product/${item.product_id}`"
+            class="col-md-2 d-none d-md-block"
+          >
             <img class="product-img" :src="item.product.imageUrl" alt="" />
           </RouterLink>
           <p class="ellipsis col-3 col-md-3 text-start my-auto">
