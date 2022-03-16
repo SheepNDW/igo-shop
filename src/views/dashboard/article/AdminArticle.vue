@@ -49,7 +49,7 @@
               <button
                 class="btn btn-sm btn-outline-primary fs-7"
                 type="button"
-                @click="openArticleModal('edit', item)"
+                @click="getArticle(item.id)"
               >
                 編輯
               </button>
@@ -72,15 +72,28 @@
       </div>
     </div>
   </div>
-  <ArticleModal ref="articleModalCom" />
+  <ArticleModal
+    ref="articleModalCom"
+    :is-edit="isEdit"
+    :article="tempArticle"
+    @update-article="updateArticle"
+  />
 </template>
 
 <script>
 import { ref } from 'vue'
 import AdminHeader from '@/components/AdminHeader.vue'
 import ArticleModal from './components/ArticleModal.vue'
-import { getArticles } from '@/api/article'
+import {
+  deleteArticle,
+  editArticle,
+  getArticleById,
+  getArticles,
+  postArticle
+} from '@/api/article'
 import dayjs from 'dayjs'
+import Message from '@/components/library/Message'
+import Confirm from '@/components/library/Confirm'
 export default {
   name: 'AdminArticle',
   components: { AdminHeader, ArticleModal },
@@ -99,9 +112,61 @@ export default {
     }
     getArticleList()
 
+    // 打開文章編輯 Modal
     const articleModalCom = ref(null)
-    const openArticleModal = () => {
+    const tempArticle = ref({})
+    const isEdit = ref(false)
+    const openArticleModal = (status, article) => {
+      if (status === 'new') {
+        isEdit.value = false
+        tempArticle.value = {
+          isPublic: false,
+          create_at: new Date().getTime() / 1000,
+          tag: []
+        }
+      } else {
+        isEdit.value = true
+        tempArticle.value = { ...article }
+      }
       articleModalCom.value.openModal()
+    }
+
+    // 取得需要編輯的文章
+    const getArticle = (id) => {
+      isLoading.value = true
+      getArticleById(id).then((data) => {
+        isLoading.value = false
+        openArticleModal('edit', data.article)
+      })
+    }
+
+    // --- 新增 or 修改文章 ---
+    const updateArticle = async (article) => {
+      articleModalCom.value.closeModal()
+      isLoading.value = true
+      // 修改
+      if (isEdit.value) {
+        const data = await editArticle(article)
+        Message({ type: 'success', text: data.message })
+      } else {
+        // 新增
+        const data = await postArticle(article)
+        Message({ type: 'success', text: data.message })
+      }
+      // 刷新頁面
+      getArticleList()
+    }
+
+    // 刪除文章
+    const removeArticle = (id) => {
+      Confirm({ text: '您確定要刪除此篇文章嗎?' })
+        .then(() => {
+          deleteArticle(id).then((data) => {
+            Message({ type: 'success', text: data.message })
+            getArticleList()
+          })
+        })
+        .catch((e) => {})
     }
 
     return {
@@ -110,7 +175,12 @@ export default {
       pagination,
       dayjs,
       openArticleModal,
-      articleModalCom
+      articleModalCom,
+      tempArticle,
+      isEdit,
+      getArticle,
+      updateArticle,
+      removeArticle
     }
   }
 }
