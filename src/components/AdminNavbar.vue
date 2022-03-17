@@ -7,7 +7,7 @@
       target="_blank"
       class="navbar-brand fs-6"
       @click="closeNavHam"
-      >GO Shop</RouterLink
+      >GO Shop 後台管理系統</RouterLink
     >
     <button class="navbar-toggler" @click="toggleNavHam">
       <i class="navbar-toggler-icon"></i>
@@ -52,7 +52,7 @@
             @click="closeNavHam"
           >
             <i class="material-icons-outlined me-1">article</i>
-            文章管理 (施工中)
+            文章管理
           </RouterLink>
         </li>
       </ul>
@@ -73,3 +73,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
+.navbar-brand {
+  font-family: 'RocknRoll One', sans-serif;
+}
+</style>

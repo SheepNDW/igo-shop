@@ -20,7 +20,7 @@
           <br />
           想要挑選棋具就來碁人館
           <RouterLink to="/products" class="btn btn-primary mt-3"
-            >查看更多</RouterLink
+            >前往商城</RouterLink
           >
         </div>
       </div>
@@ -41,8 +41,8 @@
           欲精通其內涵需要大量的練習與鑽研
           <br />
           與此同時，圍棋被認為是目前世界上最複雜的棋盤遊戲之一
-          <RouterLink to="/products" class="btn btn-primary mt-3"
-            >查看更多</RouterLink
+          <RouterLink to="/whatisgo" class="btn btn-primary mt-3"
+            >了解更多</RouterLink
           >
         </div>
       </div>
