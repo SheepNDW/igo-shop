@@ -47,7 +47,7 @@
             </div>
             <div class="card-body">
               <div class="d-flex justify-content-between">
-                <h5 class="card-title">
+                <h5 class="card-title ellipsis">
                   {{ item.title }}
                 </h5>
                 <div>
@@ -64,9 +64,7 @@
                 </template>
                 <template v-else>
                   <del>原價： {{ item.origin_price }} 元</del>
-                  <span class="text-primary h5 ms-auto"
-                    >特價： {{ item.price }} 元</span
-                  >
+                  <span class="h5 ms-auto red">特價： {{ item.price }} 元</span>
                 </template>
               </div>
               <div class="d-flex justify-content-center">
@@ -223,5 +221,11 @@ export default {
       }
     }
   }
+}
+
+.red {
+  color: #cf4444;
+  font-size: 18px;
+  font-weight: bold;
 }
 </style>

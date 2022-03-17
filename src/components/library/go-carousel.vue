@@ -14,7 +14,7 @@
         <img :src="item.imageUrl" class="card-img-top" />
         <div class="card-body">
           <div class="d-flex justify-content-between">
-            <h5 class="card-title">
+            <h5 class="card-title ellipsis">
               {{ item.title }}
             </h5>
             <div>
@@ -29,9 +29,7 @@
             </template>
             <template v-else>
               <del>原價： {{ item.origin_price }} 元</del>
-              <span class="text-danger h5 ms-auto"
-                >特價： {{ item.price }} 元</span
-              >
+              <span class="ms-auto red">特價： {{ item.price }} 元</span>
             </template>
           </div>
         </div>
@@ -96,11 +94,17 @@ export default {
 <style lang="scss" scoped>
 .card-hover {
   cursor: pointer;
+  overflow: hidden;
   transition: all 0.5s;
   &:hover {
     transform: translate3d(0, -3px, 0);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   }
+}
+.red {
+  color: #cf4444;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 // --- Swiper 樣式 ---
