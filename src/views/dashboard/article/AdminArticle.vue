@@ -35,7 +35,7 @@
           >
             <div class="col-2">{{ item.title }}</div>
             <div class="col-2">{{ item.author }}</div>
-            <div class="col-2">{{ item.description }}</div>
+            <div class="col-2 ellipsis-2">{{ item.description }}</div>
             <div class="col-2">
               {{ dayjs.unix(item.create_at).format('YYYY-MM-DD') }}
             </div>
