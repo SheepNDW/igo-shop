@@ -19,7 +19,7 @@
               {{ dayjs.unix(article.create_at).format('YYYY-MM-DD') }}
             </small>
           </div>
-          <div class="txt text-center" v-html="article.content"></div>
+          <div class="txt" v-html="article.content"></div>
         </div>
       </div>
     </div>
@@ -68,6 +68,15 @@ export default {
   }
   .txt {
     margin-bottom: 50px;
+    :deep(.image) {
+      text-align: center;
+
+      img {
+        max-width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
   }
 }
 </style>
