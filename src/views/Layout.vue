@@ -14,6 +14,7 @@ import AppFooter from '@/components/AppFooter.vue'
 import AppGoTop from '@/components/AppGoTop.vue'
 export default {
   name: 'Layout',
+  // eslint-disable-next-line vue/no-unused-components
   components: { AppNavbar, AppFooter, AppGoTop }
 }
 </script>
