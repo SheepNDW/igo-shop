@@ -8,26 +8,31 @@
             : '訂閱我們獲得超值折扣碼!'
         }}
       </h2>
-      <div class="w-50 mx-auto input-group" v-if="isSubscribe">
+      <div class="mx-auto input-group" v-if="isSubscribe">
         <input
           type="text"
-          class="col-4 form-control text-primary"
+          class="col-8 col-md-4 form-control text-primary"
           readonly
-          value="keepgoforever"
+          value="iloveGo"
         />
-        <button class="col-2 btn btn-secondary" disabled type="button">
+        <button class="col-4 col-md-2 btn btn-secondary" disabled type="button">
           已訂閱
         </button>
       </div>
-      <form @submit="handlerSubscribe" class="w-50 mx-auto input-group" v-else>
+      <form
+        @submit.prevent="handlerSubscribe"
+        class="mx-auto input-group"
+        v-else
+      >
         <input
           name="信箱"
           type="email"
-          class="col-4 form-control"
+          class="col-8 col-md-4 form-control"
           placeholder="Email"
+          required
         />
         <button
-          class="col-2 btn btn-primary"
+          class="col-4 col-md-2 btn btn-primary"
           type="submit"
           id="button-subscribe"
         >
@@ -64,6 +69,15 @@ export default {
   @media (max-width: 767.98px) {
     height: 250px;
     background-attachment: unset;
+  }
+}
+
+.input-group {
+  width: 50%;
+}
+@media (max-width: 576px) {
+  .input-group {
+    width: 100%;
   }
 }
 </style>
