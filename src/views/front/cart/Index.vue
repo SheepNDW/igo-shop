@@ -33,7 +33,7 @@
           :key="item.id"
         >
           <RouterLink
-            :to="`/product/${item.product_id}`"
+            :to="`/product/${item.product.id}`"
             class="col-md-2 d-none d-md-block"
           >
             <img class="product-img" :src="item.product.imageUrl" alt="" />
