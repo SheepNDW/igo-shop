@@ -53,6 +53,11 @@ const routes = [
       { path: 'coupon', component: AdminCoupon },
       { path: 'article', component: AdminArticle }
     ]
+  },
+  // 404 頁面
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/front/NotFound')
   }
 ]
 
