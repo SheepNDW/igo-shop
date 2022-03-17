@@ -5,14 +5,16 @@
     <router-view></router-view>
   </div>
   <AppFooter />
+  <AppGoTop />
 </template>
 
 <script>
 import AppNavbar from '@/components/AppNavbar.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import AppGoTop from '@/components/AppGoTop.vue'
 export default {
   name: 'Layout',
-  components: { AppNavbar, AppFooter }
+  components: { AppNavbar, AppFooter, AppGoTop }
 }
 </script>
 
