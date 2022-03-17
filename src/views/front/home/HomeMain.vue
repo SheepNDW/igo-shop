@@ -12,6 +12,8 @@
         </div>
         <div
           class="col-12 col-md-6 p-3 p-md-5 d-flex justify-content-center align-items-center flex-column text-center lh-lg"
+          data-aos="fade-left"
+          data-aos-duration="1000"
         >
           <h4 class="fs-5 text-primary fw-bold">各式精品棋具</h4>
           要成為一名好的棋手怎能沒有好的棋具
@@ -34,6 +36,8 @@
         </div>
         <div
           class="col-12 col-md-6 p-3 p-md-5 d-flex justify-content-center align-items-center flex-column text-center lh-lg"
+          data-aos="fade-right"
+          data-aos-duration="1000"
         >
           <h4 class="fs-5 text-primary fw-bold">簡單的規則，不簡單的遊戲</h4>
           圍棋規則簡潔而優雅，但玩法卻千變萬化

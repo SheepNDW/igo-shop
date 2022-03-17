@@ -36,6 +36,8 @@
           class="col-lg-4 col-md-6 mb-3"
           v-for="item in filterList"
           :key="item.id"
+          data-aos="fade-up"
+          data-aos-duration="1000"
         >
           <div class="card h-100 position-relative product-card">
             <div class="product-card-imgbox">

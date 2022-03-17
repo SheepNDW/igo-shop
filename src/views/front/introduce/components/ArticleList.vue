@@ -4,7 +4,13 @@
 
   <div class="row justify-content-center">
     <ul class="list-unstyled mt-4 d-flex flex-wrap col-12 col-lg-8">
-      <li class="col-12" v-for="item in articleList" :key="item.id">
+      <li
+        class="col-12"
+        v-for="item in articleList"
+        :key="item.id"
+        data-aos="zoom-in-up"
+        data-aos-duration="1000"
+      >
         <div class="card mb-3" @click="$router.push(`/whatisgo/${item.id}`)">
           <div class="article row g-0">
             <div class="article-imgbox col-3">
@@ -13,7 +19,7 @@
             <div class="col-9 my-auto">
               <div class="card-body">
                 <h5 class="card-title">{{ item.title }}</h5>
-                <p class="card-text">
+                <p class="card-text ellipsis">
                   {{ item.description }}
                 </p>
                 <p class="card-text">
