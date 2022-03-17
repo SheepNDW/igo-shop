@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 import { getProductById } from '@/api/product'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
@@ -69,10 +69,26 @@ export default {
     // 獲取單一產品詳情
     const route = useRoute()
     const product = ref(null)
-    getProductById(route.params.id).then((data) => {
-      product.value = data.product
-      isLoading.value = false
-    })
+
+    // Note: 出現路由地址商品id發生變化, 但不會重新初始化元件
+    watch(
+      () => route.params.id,
+      (newValue) => {
+        // 只在有值且在商品詳情頁中才打 API 請求
+        if (newValue && `/product/${newValue}` === route.path) {
+          isLoading.value = true
+          getProductById(route.params.id).then((data) => {
+            // 讓商品資料為null 然後使用 v-if 的元件能重新銷毀和創建
+            product.value = null
+            nextTick(() => {
+              product.value = data.product
+              isLoading.value = false
+            })
+          })
+        }
+      },
+      { immediate: true }
+    )
 
     // 加入購物車
     const qty = ref(1)
