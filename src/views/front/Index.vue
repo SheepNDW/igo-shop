@@ -1,8 +1,7 @@
 <template>
-  <div class="container">
-    <!-- 輪播圖 -->
-    <HomeBanner />
-  </div>
+  <!-- 輪播圖 -->
+  <HomeBanner />
+  <div class="container"></div>
   <!-- 首頁主要區塊 -->
   <HomeMain />
   <!-- 首頁人氣推薦 -->
@@ -16,6 +15,7 @@ import HomeMain from './home/HomeMain.vue'
 import { getProductsAll } from '@/api/product'
 export default {
   name: 'HomePage',
+  // eslint-disable-next-line vue/no-unused-components
   components: { HomeMain, HomeBanner },
   setup() {
     // 取得人氣推薦產品
