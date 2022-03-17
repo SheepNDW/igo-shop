@@ -25,7 +25,7 @@
               <p class="attr ellipsis">{{ item.product.description }}</p>
             </div>
             <div class="right">
-              <p class="price">&#36;{{ item.product.price }}</p>
+              <p class="price">&#36;{{ $currency(item.product.price) }}</p>
               <p class="count">{{ item.qty }}</p>
             </div>
           </RouterLink>
@@ -37,7 +37,7 @@
       <div class="foot">
         <div class="total">
           <p>共 {{ totalQty }} 件商品</p>
-          <p>&#36;{{ $store.state['cart'].cartData.total }}</p>
+          <p>&#36;{{ $currency($store.state['cart'].cartData.total) }}</p>
         </div>
         <button
           type="button"

@@ -17,7 +17,9 @@
           支付方式：<span>{{ order?.user?.payment_method }}</span>
         </p>
         <p>
-          本次交易金額：<span class="red">${{ Math.round(order?.total) }}</span>
+          本次交易金額：<span class="red"
+            >${{ $currency(Math.round(order?.total)) }}</span
+          >
         </p>
         <button class="btn btn-secondary" @click="$router.push('/')">
           回到首頁

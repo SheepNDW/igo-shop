@@ -43,7 +43,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-2">NT${{ order.total }}</div>
+            <div class="col-2">NT${{ $currency(Math.round(order.total)) }}</div>
             <div class="col-2 text-success" v-if="order.is_paid">
               <span>已付款</span>
             </div>

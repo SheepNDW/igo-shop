@@ -29,12 +29,15 @@
                 <p class="ellipsis m-0">{{ item.product.title }}</p>
                 <small class="text-muted">數量：{{ item.qty }}</small>
               </div>
-              <div class="col-5 ls-1 text-end">NT$ {{ item.total }}</div>
+              <div class="col-5 ls-1 text-end">
+                NT$ {{ $currency(item.total) }}
+              </div>
             </div>
           </li>
         </ul>
         <div class="text-end">
-          總金額：NT$ <span class="fs-4">{{ Math.round(order.total) }}</span>
+          總金額：NT$
+          <span class="fs-4">{{ $currency(Math.round(order.total)) }}</span>
         </div>
       </div>
       <!-- 訂購人資料 -->

@@ -29,7 +29,9 @@
                 <p class="ellipsis m-0">{{ item.product.title }}</p>
                 <small class="text-muted">數量：{{ item.qty }}</small>
               </div>
-              <div class="col-5 ls-1 text-end">NT$ {{ item.total }}</div>
+              <div class="col-5 ls-1 text-end">
+                NT$ {{ $currency(item.total) }}
+              </div>
             </div>
           </li>
         </ul>
@@ -58,16 +60,16 @@
           </button>
         </div>
         <p class="text-primary text-end" v-if="!isDiscount">
-          總金額：NT$ <span class="fs-4">{{ cartData.total }}</span>
+          總金額：NT$ <span class="fs-4">{{ $currency(cartData.total) }}</span>
         </p>
         <div v-else class="text-end">
           <small class="fs-7 text-muted">
-            總金額：NT$ {{ cartData.total }}
+            總金額：NT$ {{ $currency(cartData.total) }}
           </small>
           <p class="text-primary">
             折扣後金額：
             <span class="fs-4 text-success"
-              >NT${{ Math.round(cartData.final_total) }}</span
+              >NT${{ $currency(Math.round(cartData.final_total)) }}</span
             >
           </p>
         </div>
@@ -107,7 +109,6 @@ export default {
         const data = await useCoupon({ code: code.value })
         Message({ type: 'success', text: data.message })
         isDiscount.value = true
-        console.log(data)
       } catch (err) {
         Message({ type: 'error', text: err.response.data.message })
       }

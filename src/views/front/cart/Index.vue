@@ -41,14 +41,16 @@
           <p class="ellipsis col-3 col-md-3 text-start my-auto">
             {{ item.product.title }}
           </p>
-          <div class="col-1 d-none d-md-block">{{ item.product.price }}</div>
+          <div class="col-1 d-none d-md-block">
+            {{ $currency(item.product.price) }}
+          </div>
           <div class="col-5 col-md-3 d-flex justify-content-center">
             <GoNumbox
               @change="($event) => updateCount(item.id, $event)"
               :modelValue="item.qty"
             />
           </div>
-          <div class="col-2 col-md-1">{{ item.total }}</div>
+          <div class="col-2 col-md-1">{{ $currency(item.total) }}</div>
           <div class="col-2">
             <i
               v-show="isLoadingItem !== item.id"
@@ -78,7 +80,7 @@
       <div class="col-10 total d-flex justify-content-end">
         <p class="d-none d-md-block my-auto">共 {{ totalQty }} 件商品，</p>
         <p class="my-auto">
-          合計：<span class="red">${{ cartData.final_total }}</span>
+          合計：<span class="red">${{ $currency(cartData.final_total) }}</span>
         </p>
         <button
           type="button"

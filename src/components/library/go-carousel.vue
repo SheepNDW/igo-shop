@@ -25,11 +25,15 @@
           </div>
           <div class="d-flex justify-content-between">
             <template v-if="item.origin_price === item.price">
-              <span class="h5 ms-auto">原價： {{ item.origin_price }} 元</span>
+              <span class="h5 ms-auto"
+                >原價： {{ $currency(item.origin_price) }} 元</span
+              >
             </template>
             <template v-else>
-              <del>原價： {{ item.origin_price }} 元</del>
-              <span class="ms-auto red">特價： {{ item.price }} 元</span>
+              <del>原價： {{ $currency(item.origin_price) }} 元</del>
+              <span class="ms-auto red"
+                >特價： {{ $currency(item.price) }} 元</span
+              >
             </template>
           </div>
         </div>

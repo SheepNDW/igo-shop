@@ -2,8 +2,8 @@
   <div class="h2">{{ product.title }}</div>
   <p class="desc">{{ product.description }}</p>
   <p class="price">
-    <span>{{ product.price }}</span>
-    <span>{{ product.origin_price }}</span>
+    <span>{{ $currency(product.price) }}</span>
+    <span>{{ $currency(product.origin_price) }}</span>
   </p>
   <div class="card service mb-5">
     <div class="card-body">

@@ -12,7 +12,9 @@
       <p class="m-0">品項：{{ Object.keys(order.products).length }}</p>
       <p class="m-0">
         訂單金額：
-        <span class="fs-5 fw-bold text-danger">{{ '$' + order.total }}</span>
+        <span class="fs-5 fw-bold text-danger">{{
+          '$' + $currency(Math.round(order.total))
+        }}</span>
       </p>
     </div>
     <ul class="list-unstyled mt-3">

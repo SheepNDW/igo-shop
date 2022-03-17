@@ -50,8 +50,8 @@
               </span>
             </div>
             <div class="col-3 text-start">{{ product.title }}</div>
-            <div class="col-2">{{ product.origin_price }}</div>
-            <div class="col-2">{{ product.price }}</div>
+            <div class="col-2">{{ $currency(product.origin_price) }}</div>
+            <div class="col-2">{{ $currency(product.price) }}</div>
             <div class="col-1 text-success" v-if="product.is_enabled">
               <i class="material-icons-outlined">check_circle</i>
             </div>
