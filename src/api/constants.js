@@ -2,7 +2,6 @@
 
 // 產品類別
 export const productCategory = [
-  '測試',
   '圍棋子',
   '圍棋罐',
   '圍棋盤 / 棋墩',
