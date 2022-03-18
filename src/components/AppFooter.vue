@@ -28,7 +28,7 @@
             </p>
             <ul class="list-unstyled">
               <li>
-                <a href="#" target="_blank"
+                <a href="https://github.com/SheepNDW/igo-shop" target="_blank"
                   ><i class="fab fa-github fs-4"></i
                 ></a>
               </li>
@@ -39,7 +39,7 @@
           <div class="gf-other">
             <ul class="gf-nav">
               <li>
-                <RouterLink to="whatisgo">
+                <RouterLink to="/whatisgo">
                   <i class="icon material-icons-round">chevron_right</i>
                   認識圍棋
                 </RouterLink>
@@ -83,7 +83,7 @@
         <div class="gf-other">
           <ul class="gf-nav">
             <li>
-              <RouterLink to="whatisgo">
+              <RouterLink to="/whatisgo">
                 <i class="icon material-icons-round">chevron_right</i>
                 認識圍棋
               </RouterLink>
@@ -119,7 +119,9 @@
           </p>
           <ul class="list-unstyled">
             <li>
-              <a href="#" target="_blank"><i class="fab fa-github fs-4"></i></a>
+              <a href="https://github.com/SheepNDW/igo-shop" target="_blank"
+                ><i class="fab fa-github fs-4"></i
+              ></a>
             </li>
           </ul>
         </div>
