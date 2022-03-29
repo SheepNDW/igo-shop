@@ -1,7 +1,6 @@
 <template>
   <!-- 輪播圖 -->
   <HomeBanner />
-  <div class="container"></div>
   <!-- 首頁主要區塊 -->
   <HomeMain />
   <!-- 首頁人氣推薦 -->
@@ -13,6 +12,7 @@ import { ref } from 'vue'
 import HomeBanner from './home/HomeBanner.vue'
 import HomeMain from './home/HomeMain.vue'
 import { getProductsAll } from '@/api/product'
+
 export default {
   name: 'HomePage',
   components: { HomeMain, HomeBanner },
