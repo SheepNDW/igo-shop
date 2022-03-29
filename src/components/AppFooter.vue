@@ -160,8 +160,6 @@ export default {
   max-width: 1320px;
   margin: 0 auto;
   padding: 40px 30px;
-  // display: flex;
-  // flex-direction: column-reverse;
 }
 
 .PC .go-footer-inner {
@@ -175,10 +173,6 @@ export default {
 
 .go-footer-inner > *:last-child {
   margin-bottom: 0;
-}
-
-.msie .go-footer:before {
-  border-bottom: 1px solid #555;
 }
 
 @media (min-width: 1280px) {
