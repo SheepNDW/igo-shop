@@ -3,7 +3,7 @@
     :modules="modules"
     :slidesPerView="1"
     :autoplay="{
-      delay: 2000,
+      delay: 4000,
       stopOnLastSlide: false,
       disableOnInteraction: false,
       pauseOnMouseEnter: true
@@ -51,15 +51,15 @@ export default {
       },
       {
         imgUrl:
-          'https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1646551712907.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=PR3Btr1lvFS3zRUE8%2B%2F2JPfHiVGp%2FxTEL73KB9gF2TEwe4x%2FD7%2BlxGPS4Nu9Lj%2Bp1Op2EmO%2Bi0XaJ2rAOzze%2BvkyS7MFV3I8GiwDa9LzkbySB1H%2B5VHU12KMzMrTYdqyyWrFrVUF8DsPDe5xELWyPmNAlLcOdKVZ2xxs0exbdJHNJBXtd%2BG9F2PcDx2L0DFKfjeDZClWk6Yz57mVF1UIdz5w91jaPY9l6dOjDwKiPZ2G4Lz490LqeU%2BX4M0xyvi%2FvG%2Fbc3qgnsBKhN1IVnBJM7%2BkTFF3qmjQ4npSnJVzfciRR9PuVP9nz9OxvvfEOF5%2B1U3N%2BSouTkpvXWpDf3t38g%3D%3D',
+          'https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1648559373714.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=dZwhzuNVcIwtN1tObYfYXxD52gQeTeiOcOL8JOXbldco4YhjfKS%2FEEyTAGu4b%2FQx%2B8Tqah8pRvf%2FxHyyAEGYKBPdhEzdjoZ%2F%2BnbzigTB1JinuyY%2FQ1RJ8ReAAB5mb8N%2FBnRPGJ3oWGPHc23ulQmTtOJmNGV97ATdHzo3HATeUY9ddM8pgXTCwA1ZotBQTq%2Fy0AGfr4V%2Fp2pc7M4hYHVYgmSC01loRGtE3KEP14MhEkOyRhqYJ7enI0Lf3GmiqwrOdIgSkISYXN0SjK82bILHFSl9RI180OOJLrAetEPUJy7qkU7ZAT9FtlmNVh2IxyWTUCWqaPlZ3sY9%2BkyevBcDlA%3D%3D',
         motto: '以棋會友，樂在棋中',
         desc: '黑白天地把手談，方圓世界覓從容'
       },
       {
         imgUrl:
-          'https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1646551819218.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=pqQ093D0xYw80Flm3AulCdts9Uenpsevko0VjZAQ3yOSEuLbcjTNxD%2BOUu3rNnUm64O1%2FoZLzHKds9M5piE8X6gex%2Btse%2FhGT4PXd1GqTiIsS1hzAobCgwSGwZ%2FSes1u2bZmDhNXrwoGJb0eIG7wpsM%2BeBgxf3JFmRTD4Rk7OAjVX6dYKoBzrJ89nQA%2BwUMxaqWiSnljYdZX6S7li2jN1NRdg3KafIbFsUuYf9AI2%2BxMnzlnZEF1U7hNVUmWSRWG%2FPXftwzgmk5o%2FR0NLg0wigPn%2FtfizUu%2BOiNPIbeUIVcpdQr3qev4lRe3iYbt2GJnTfAyxhgdo15652MUrpRAsw%3D%3D',
+          'https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1648559591653.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=mIvr99JldhasrrHQf5Ge3qHvNW5MBjQfzfJXxCZno811e62JvpnB1J57EmrMX9xs4W6aGQ33t75ZGARrMe9%2BJMi3YC0SRv4a1b5qzAo4KwUF5I0XexXl8%2Bryue9aD69AyPPQY7n2n3bcxyDK1zXhXYap%2Fj7M62BYOAKNJ2eusi%2BRGpKzwGUCEX0Ew2ZdqUZqbywtT5C2CuW0lHwXkPUu3NLCdzwx4jPpp2VQ9OAr5Nb6AWq5T35vsMZGzLe0KKAuwi44mZv41I06UsI659icL9HwCJVbKZIgBl08p3Qi4YfGEBLSOWXlxAxRl%2FU3L9t%2F4yjx8MXNSBI%2FSBs8H3QwHQ%3D%3D',
         motto: '黑白相間，見素抱樸',
-        desc: '黑白天地把手談，方圓世界覓從容'
+        desc: '紋枰古道穿行，領略圍棋風情'
       },
       {
         imgUrl:
