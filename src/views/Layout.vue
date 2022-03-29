@@ -2,7 +2,7 @@
   <AppNavbar />
   <div class="app-body">
     <!-- 二級路由 -->
-    <router-view></router-view>
+    <RouterView />
   </div>
   <AppFooter />
   <AppGoTop />
@@ -14,7 +14,6 @@ import AppFooter from '@/components/AppFooter.vue'
 import AppGoTop from '@/components/AppGoTop.vue'
 export default {
   name: 'Layout',
-  // eslint-disable-next-line vue/no-unused-components
   components: { AppNavbar, AppFooter, AppGoTop }
 }
 </script>

@@ -15,7 +15,6 @@ import HomeMain from './home/HomeMain.vue'
 import { getProductsAll } from '@/api/product'
 export default {
   name: 'HomePage',
-  // eslint-disable-next-line vue/no-unused-components
   components: { HomeMain, HomeBanner },
   setup() {
     // 取得人氣推薦產品
