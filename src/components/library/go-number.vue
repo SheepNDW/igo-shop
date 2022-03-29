@@ -2,9 +2,9 @@
   <div class="go-numbox">
     <div class="label" v-if="label">{{ label }}</div>
     <div class="numbox">
-      <a href="javascript:;" @click="changeNum(-1)"> - </a>
+      <a href="#" @click.prevent="changeNum(-1)"> - </a>
       <input type="text" readonly :value="modelValue" />
-      <a href="javascript:;" @click="changeNum(1)"> + </a>
+      <a href="#" @click.prevent="changeNum(1)"> + </a>
     </div>
   </div>
 </template>
