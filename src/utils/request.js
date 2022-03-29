@@ -27,6 +27,7 @@ instance.interceptors.response.use(res => res.data, err => {
   // 401 code 進入此函式
   if (err.response && err.response.status === 401) {
     alert(err.response.data.message)
+    document.cookie = 'hexToken=;expires=;'
     const fullPath = encodeURIComponent(router.currentRoute.value.fullPath)
     router.push('/login?redirectUrl=' + fullPath)
   }
