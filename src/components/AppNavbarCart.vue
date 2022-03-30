@@ -10,16 +10,15 @@
         v-show="totalQty"
         class="position-absolute top-1 start-70 translate-middle badge rounded-pill bg-danger"
       >
-        {{ totalQty }}
+        {{ carts.length }}
       </span>
     </RouterLink>
     <!-- 購物車彈層 -->
     <div class="layer" v-if="carts.length > 0 && $route.path !== '/cart'">
       <div class="list">
         <div class="item" v-for="item in carts" :key="item.id">
-          <!-- bug: 在產品詳情頁中跳轉失效 -->
           <RouterLink :to="`/product/${item.product.id}`">
-            <img :src="item.product.imageUrl" alt="" />
+            <img :src="item.product.imageUrl" alt="商品圖" />
             <div class="center">
               <p class="name ellipsis-2">{{ item.product.title }}</p>
               <p class="attr ellipsis">{{ item.product.description }}</p>
@@ -55,6 +54,7 @@
 import { computed } from 'vue-demi'
 import { useStore } from 'vuex'
 import Message from './library/Message'
+
 export default {
   name: 'AppNavbarCart',
   setup() {
