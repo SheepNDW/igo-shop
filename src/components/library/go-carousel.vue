@@ -71,7 +71,7 @@ export default {
       default: false
     }
   },
-  setup(props) {
+  setup() {
     const breakpoints = reactive({
       640: {
         slidesPerView: 1,
@@ -84,6 +84,10 @@ export default {
       1024: {
         slidesPerView: 3,
         spaceBetween: 30
+      },
+      1400: {
+        slidesPerView: 4,
+        spaceBetween: 15
       }
     })
 
