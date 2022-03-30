@@ -5,7 +5,7 @@
   >
     <div class="container">
       <!-- logo -->
-      <h1>
+      <h1 class="d-flex mb-0">
         <RouterLink class="navbar-brand" to="/" @click="closeNavHam">
           碁人館 - GO Shop
         </RouterLink>
@@ -19,7 +19,7 @@
         class="collapse navbar-collapse justify-content-end"
         ref="navbarCollapseRef"
       >
-        <ul class="navbar-nav">
+        <ul class="navbar-nav align-items-md-center">
           <li class="nav-item">
             <RouterLink class="nav-link" to="/whatisgo" @click="closeNavHam">
               認識圍棋
@@ -47,6 +47,7 @@
 import { onMounted, reactive, ref } from 'vue'
 import { useBsCollapse } from '@/hooks'
 import AppNavbarCart from './AppNavbarCart.vue'
+
 export default {
   name: 'AppNavbar',
   components: { AppNavbarCart },
