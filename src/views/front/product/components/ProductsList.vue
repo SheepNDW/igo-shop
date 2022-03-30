@@ -71,16 +71,16 @@
                   >
                 </template>
               </div>
-              <div class="d-flex justify-content-center">
+              <div class="d-flex justify-content-center mt-2">
                 <button
-                  class="btn btn-outline-primary me-3"
+                  class="col-6 btn btn-outline-primary me-3"
                   type="button"
                   @click="$router.push(`/product/${item.id}`)"
                 >
                   查看
                 </button>
                 <button
-                  class="btn btn-primary d-flex align-items-center"
+                  class="col-6 btn btn-primary d-flex align-items-center justify-content-center"
                   :disabled="isLoadingItem === item.id"
                   type="button"
                   @click="addToCart(item.id)"
@@ -112,6 +112,7 @@ import { getProductsAll } from '@/api/product'
 import { useFilterCategory, usePagination } from '@/hooks'
 import { useStore } from 'vuex'
 import Message from '@/components/library/Message'
+
 export default {
   name: 'ProductsList',
   setup() {
