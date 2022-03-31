@@ -27,10 +27,11 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { getFrontArticleByID } from '@/api/article'
 import dayjs from 'dayjs'
+
 export default {
   name: 'ArticleDetail',
   setup() {
@@ -39,10 +40,23 @@ export default {
     // 取得文章內容
     const article = ref(null)
     const route = useRoute()
-    getFrontArticleByID(route.params.id).then((data) => {
-      article.value = data.article
-      isLoading.value = false
-    })
+    const router = useRouter()
+
+    watch(
+      () => route.params.id,
+      (newValue) => {
+        if (newValue && `/whatisgo/${newValue}` === route.path) {
+          isLoading.value = true
+          getFrontArticleByID(route.params.id)
+            .then((data) => {
+              article.value = data.article
+              isLoading.value = false
+            })
+            .catch((e) => router.push('/404'))
+        }
+      },
+      { immediate: true }
+    )
 
     return {
       isLoading,

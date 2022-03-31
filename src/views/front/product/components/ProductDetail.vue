@@ -54,13 +54,14 @@
 <script>
 import { nextTick, ref, watch } from 'vue'
 import { getProductById } from '@/api/product'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import ProductImage from './ProductImage.vue'
 import ProductName from './ProductName.vue'
 import ProductWarn from './ProductWarn.vue'
 import ProductRelevant from './ProductRelevant.vue'
 import Message from '@/components/library/Message'
+
 export default {
   name: 'ProductDetail',
   components: { ProductImage, ProductName, ProductWarn, ProductRelevant },
@@ -68,6 +69,7 @@ export default {
     const isLoading = ref(true)
     // 獲取單一產品詳情
     const route = useRoute()
+    const router = useRouter()
     const product = ref(null)
 
     // Note: 出現路由地址商品id發生變化, 但不會重新初始化元件
@@ -77,14 +79,16 @@ export default {
         // 只在有值且在商品詳情頁中才打 API 請求
         if (newValue && `/product/${newValue}` === route.path) {
           isLoading.value = true
-          getProductById(route.params.id).then((data) => {
-            // 讓商品資料為null 然後使用 v-if 的元件能重新銷毀和創建
-            product.value = null
-            nextTick(() => {
-              product.value = data.product
-              isLoading.value = false
+          getProductById(route.params.id)
+            .then((data) => {
+              // 讓商品資料為null 然後使用 v-if 的元件能重新銷毀和創建
+              product.value = null
+              nextTick(() => {
+                product.value = data.product
+                isLoading.value = false
+              })
             })
-          })
+            .catch((e) => router.push('/404'))
         }
       },
       { immediate: true }
