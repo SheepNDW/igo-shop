@@ -59,7 +59,7 @@ export default {
   }
   .title {
     font-size: 14px;
-    padding: 20px 25px;
+    padding: 0px 25px;
     color: #333;
   }
 
@@ -67,7 +67,6 @@ export default {
     li {
       list-style: none;
       font-size: 14px;
-      padding: 20px 25px;
       color: #666;
     }
   }
