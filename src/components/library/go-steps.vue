@@ -27,7 +27,7 @@ export default {
     // #3 根據動態節點生成 item 的 jsx 物件
     const itemsJsx = dynamicItems.map((item, i) => {
       return (
-        <div class="go-steps-item" class={{ active: i < this.active }}>
+        <div class={[{ active: i < this.active }, { 'go-steps-item': true }]}>
           <div class="step">
             <span>{i + 1}</span>
           </div>
