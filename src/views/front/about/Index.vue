@@ -69,6 +69,7 @@ export default {
 <style lang="scss" scoped>
 .about-us {
   height: 600px;
+  overflow-x: hidden;
   @media (max-width: 767.98px) {
     height: 550px;
   }
