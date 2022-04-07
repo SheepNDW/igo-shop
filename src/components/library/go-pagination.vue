@@ -1,10 +1,10 @@
 <template>
-  <nav aria-label="Page navigation example">
+  <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
       <li class="page-item" :class="{ disabled: !pages.has_pre }">
         <a
           class="page-link"
-          href="javascript:;"
+          href="#"
           aria-label="Previous"
           @click.prevent="changePager(pages.current_page - 1)"
         >
@@ -17,17 +17,14 @@
         v-for="page in pages.total_pages"
         :key="page + 'page'"
       >
-        <a
-          class="page-link"
-          href="javascript:;"
-          @click.prevent="changePager(page)"
-          >{{ page }}</a
-        >
+        <a class="page-link" href="#" @click.prevent="changePager(page)">{{
+          page
+        }}</a>
       </li>
       <li class="page-item" :class="{ disabled: !pages.has_next }">
         <a
           class="page-link"
-          href="javascript:;"
+          href="#"
           aria-label="Next"
           @click.prevent="changePager(pages.current_page + 1)"
         >
