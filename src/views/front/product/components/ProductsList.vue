@@ -6,7 +6,7 @@
         <ul class="category-panel list-group list-unstyled text-center mt-2">
           <li>
             <a
-              href="javascript:;"
+              href="#"
               class="list-group-item list-group-item-action"
               :class="{ active: filter === 'all' }"
               @click.prevent="filterChanger('all')"
@@ -16,7 +16,7 @@
           </li>
           <li v-for="cate in categoryList" :key="cate">
             <a
-              href="javascript:;"
+              href="#"
               class="list-group-item list-group-item-action"
               :class="{ active: filter === cate }"
               @click.prevent="filterChanger(cate)"
@@ -71,16 +71,16 @@
                   >
                 </template>
               </div>
-              <div class="d-flex justify-content-center mt-2">
+              <div class="d-flex justify-content-between mt-2">
                 <button
-                  class="col-6 btn btn-outline-primary me-3"
+                  class="col-5 btn btn-outline-primary me-3"
                   type="button"
                   @click="$router.push(`/product/${item.id}`)"
                 >
                   查看
                 </button>
                 <button
-                  class="col-6 btn btn-primary d-flex align-items-center justify-content-center"
+                  class="col-5 btn btn-primary d-flex align-items-center justify-content-center"
                   :disabled="isLoadingItem === item.id"
                   type="button"
                   @click="addToCart(item.id)"
