@@ -106,12 +106,13 @@
 </template>
 
 <script>
-import { computed, ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect, watch } from 'vue'
 import { productCategory } from '@/api/constants'
 import { getProductsAll } from '@/api/product'
 import { useFilterCategory, usePagination } from '@/hooks'
 import { useStore } from 'vuex'
 import Message from '@/components/library/Message'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'ProductsList',
@@ -174,6 +175,16 @@ export default {
         Message({ type: 'success', text: '已成功加入購物車! ' })
       })
     }
+
+    // 在路由後面新增當前 category 參數
+    const router = useRouter()
+    watch(
+      filter,
+      () => {
+        router.push(`/products?category=${filter.value}`)
+      },
+      { immediate: true }
+    )
 
     return {
       categoryList: productCategory,
