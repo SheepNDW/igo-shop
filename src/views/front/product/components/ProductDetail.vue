@@ -85,6 +85,7 @@ export default {
               product.value = null
               nextTick(() => {
                 product.value = data.product
+                document.title = `${product.value.category} - ${product.value.title}`
                 isLoading.value = false
               })
             })

@@ -26,15 +26,15 @@ const routes = [
     component: Layout,
     children: [
       { path: '/', component: Home },
-      { path: 'products', component: Products },
+      { path: 'products', component: Products, meta: { title: '線上商城' } },
       { path: 'product/:id', component: ProductDetail },
-      { path: 'cart', component: Cart },
-      { path: 'about', component: About },
-      { path: 'whatisgo', component: IntroduceGo },
+      { path: 'cart', component: Cart, meta: { title: '購物車' } },
+      { path: 'about', component: About, meta: { title: '關於我們' } },
+      { path: 'whatisgo', component: IntroduceGo, meta: { title: '認識圍棋' } },
       { path: 'whatisgo/:id', component: GoArticle },
-      { path: 'checkout', component: Checkout },
-      { path: 'checkout/:id', component: PayOrder },
-      { path: 'checkout/result/:id', component: PaidResult }
+      { path: 'checkout', component: Checkout, meta: { title: '填寫購買資料' } },
+      { path: 'checkout/:id', component: PayOrder, meta: { title: '確認訂單' } },
+      { path: 'checkout/result/:id', component: PaidResult, meta: { title: '交易完成' } }
     ]
   },
   // 登入

@@ -50,6 +50,7 @@ export default {
           getFrontArticleByID(route.params.id)
             .then((data) => {
               article.value = data.article
+              document.title = `認識圍棋 - ${article.value.title}`
               isLoading.value = false
             })
             .catch((e) => router.push('/404'))
