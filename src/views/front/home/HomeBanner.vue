@@ -14,7 +14,7 @@
   >
     <SwiperSlide v-for="(item, i) in bannerData" :key="i">
       <div class="position-relative">
-        <img :src="item.imgUrl" class="banner-img" />
+        <img v-lazy="item.imgUrl" class="banner-img" />
         <div
           class="text-box p-2 p-md-4 position-absolute start-50 translate-middle-x w-75 w-md-50 w-lg-35"
         >
@@ -35,6 +35,7 @@ import { A11y, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
 import '@/assets/styles/swiper/swiper-bundle.css'
 import { ref } from 'vue'
+
 export default {
   name: 'HomeBanner',
   components: {

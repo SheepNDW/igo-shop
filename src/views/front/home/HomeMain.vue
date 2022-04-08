@@ -6,8 +6,9 @@
         <div class="col-12 col-md-6">
           <img
             class="img-fluid"
-            src="https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1646290955333.jpeg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=QpN3DCKwvNdkuLf7oYwqZxo%2Ftt2pGMYaJVs4%2BOdN4KYcmmdKZjNip%2BBsGv%2FKWSZJYJKhQZ2zB5wNQaX2U%2FT6xasXj4EsmXOmjZzH5khO9%2BsO7wWIYBTBpWm3TlCVTaSHQiJyJcVUAJH8vxfkNFzyzy2w4rXwd%2B8SJLtNaV1D%2B2ZaRuU2necUyLJyjZF0IxquY1JWg2xm3UUDSEs7bkku%2FejkE4chvjbXEfRDPMAela60yqTaVfOHUjWbl6SLjY0OcH%2B1svtovAhrXA1CDT42oE8dHAH3kSlNJcP0xjLhJJFBk6YTNPyEzqs16vkozVK3bfU904pB6QFrSA0A3yJt8Q%3D%3D"
-            alt="棋具"
+            v-lazy="
+              `https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1646290955333.jpeg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=QpN3DCKwvNdkuLf7oYwqZxo%2Ftt2pGMYaJVs4%2BOdN4KYcmmdKZjNip%2BBsGv%2FKWSZJYJKhQZ2zB5wNQaX2U%2FT6xasXj4EsmXOmjZzH5khO9%2BsO7wWIYBTBpWm3TlCVTaSHQiJyJcVUAJH8vxfkNFzyzy2w4rXwd%2B8SJLtNaV1D%2B2ZaRuU2necUyLJyjZF0IxquY1JWg2xm3UUDSEs7bkku%2FejkE4chvjbXEfRDPMAela60yqTaVfOHUjWbl6SLjY0OcH%2B1svtovAhrXA1CDT42oE8dHAH3kSlNJcP0xjLhJJFBk6YTNPyEzqs16vkozVK3bfU904pB6QFrSA0A3yJt8Q%3D%3D`
+            "
           />
         </div>
         <div
@@ -30,8 +31,9 @@
         <div class="col-12 col-md-6">
           <img
             class="img-fluid"
-            src="https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1646566093699.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=WUi1MPla9Lt2t2hvJgYYVwzv%2BEGqRQ6lRyJk%2B%2FiEqSWj%2FA5mpjx442wGZPj7LfwJFNuOe4MOS%2FPZq%2B8%2BNb27%2FwXmzpzGTLBL1Lka0Rr33xXMbERuOg4GZ%2Fp4KtbkjyfIJiHho12PtXG7GuSozdDRPmV6M3g8THinZvtSgGfcSIXrvKpaT7Hfg7BtDOjOPgenzGajkTPg6GmAebNjAAYYlf0M0Go21ohO9vzJ%2BoYJJByg%2FF%2Bw5wBhB106W4YMn7rMqUBJw4KeiLkmT1akAmnYdaAkDBCnTZqgoTwJLR1%2FYgsFTPJN65gPa36cbPW9AsyhqxuJO6C542Wzrxj2fe7ANg%3D%3D"
-            alt="棋子"
+            v-lazy="
+              `https://storage.googleapis.com/vue-course-api.appspot.com/sheep-api/1646566093699.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=WUi1MPla9Lt2t2hvJgYYVwzv%2BEGqRQ6lRyJk%2B%2FiEqSWj%2FA5mpjx442wGZPj7LfwJFNuOe4MOS%2FPZq%2B8%2BNb27%2FwXmzpzGTLBL1Lka0Rr33xXMbERuOg4GZ%2Fp4KtbkjyfIJiHho12PtXG7GuSozdDRPmV6M3g8THinZvtSgGfcSIXrvKpaT7Hfg7BtDOjOPgenzGajkTPg6GmAebNjAAYYlf0M0Go21ohO9vzJ%2BoYJJByg%2FF%2Bw5wBhB106W4YMn7rMqUBJw4KeiLkmT1akAmnYdaAkDBCnTZqgoTwJLR1%2FYgsFTPJN65gPa36cbPW9AsyhqxuJO6C542Wzrxj2fe7ANg%3D%3D`
+            "
           />
         </div>
         <div

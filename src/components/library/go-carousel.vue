@@ -11,7 +11,7 @@
   >
     <SwiperSlide v-for="item in slides" :key="item.id">
       <div class="card card-hover" @click="$router.push(`/product/${item.id}`)">
-        <img :src="item.imageUrl" class="card-img-top" />
+        <img v-lazy="item.imageUrl" class="card-img-top" />
         <div class="card-body">
           <div class="d-flex justify-content-between">
             <h5 class="card-title ellipsis">
@@ -47,6 +47,7 @@ import { Pagination, Navigation, A11y, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue'
 import '@/assets/styles/swiper/swiper-bundle.css'
 import { reactive } from 'vue'
+
 export default {
   name: 'GoCarousel',
   components: {

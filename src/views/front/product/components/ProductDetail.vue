@@ -41,7 +41,7 @@
         <p style="color: #666">{{ product.content }}</p>
         <ul class="list-unstyled">
           <li v-for="img in product.imagesUrl" :key="img">
-            <img class="img-fluid mb-2" :src="img" alt="" />
+            <img class="img-fluid mb-2" v-lazy="img" />
           </li>
         </ul>
       </div>
